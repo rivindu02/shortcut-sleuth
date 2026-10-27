@@ -1,0 +1,45 @@
+# Python and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+
+# Generated data and large experiment artifacts
+/data/
+/datasets/
+/checkpoints/
+/runs/
+/outputs/
+/artifacts/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.npz
+*.npy
+*.log
+
+# Local infrastructure and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.token
+.ssh/
+.local/
+
+# Editors and frontend caches
+.DS_Store
+.idea/
+.vscode/
+node_modules/
+.cache/
