@@ -4,7 +4,12 @@
 
 Deliver a reproducible experiment and an interactive comparison of background shortcut learning in a small CNN and a small Vision Transformer. Report measured results without assuming either architecture will outperform the other.
 
-**Status:** experiment design. Data generation, models, training, evaluation and the application are not implemented yet.
+**Implementation sequence:** complete the background experiment before optional interventions. Each stage is committed independently; validation evidence and remaining limitations belong in the results report.
+
+1. Implement a versioned, deterministic renderer, manifests, leakage rejection and paired metrics. Verify the exact colour-only control and foreground preservation.
+2. Implement both randomly initialised models, parameter checks, deterministic training, checkpoint provenance and shared offline/application inference. Provide a tiny balanced overfit check and a bounded smoke configuration separately from the full protocol.
+3. Implement the local interactive comparison, checkpoint discovery, honest empty states and measured report generation. Exercise HTTP routes and browser controls.
+4. Add CI, reproduction commands, development evidence and release documentation. Run every check supported by the environment and record unavailable checks explicitly. Freeze the full study only after the development learning checks pass.
 
 ## Milestones
 
@@ -42,7 +47,7 @@ results/            # measured summaries and figures
 docs/               # protocol and results report
 ```
 
-This layout is planned; the code directories are not implemented yet.
+The implementation follows this layout. See the README and results report for verified execution status; implementation alone does not establish an experimental result.
 
 ## Essential checks
 
