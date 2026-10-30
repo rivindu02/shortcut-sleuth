@@ -87,6 +87,8 @@ def train_run(config, data_dir, run_dir, architecture, condition, seed, device="
         raise FileExistsError(f"Refusing to overwrite run: {run_dir}")
     if config["epochs"] < 1 or config["batch_size"] < 1 or config["learning_rate"] <= 0 or config["weight_decay"] < 0:
         raise ValueError("Invalid training settings")
+    if seed not in config["seeds"] or architecture not in config["architectures"] or condition not in config["conditions"]:
+        raise ValueError("Run identity is outside the configured experiment matrix")
     if config["data_seed"] == 2026:
         if not config.get("frozen") or config.get("freeze", {}).get("implementation_sha256") != implementation_hash():
             raise ValueError("Freeze the current implementation after development checks before final-study training")

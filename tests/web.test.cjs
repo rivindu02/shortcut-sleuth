@@ -91,7 +91,9 @@ test('background swaps reuse the paired object and do not call inference again',
 test('shape and seed controls request deterministic new specimens', async () => {
   const {ids,shapes} = await app();
   shapes[2].click();
+  assert.equal(ids['specimen-image'].hidden, true);
   await settle();
+  assert.equal(ids['specimen-image'].hidden, false);
   assert.equal(ids['specimen-image'].src, fixtures.examples['2/73'].images[0]);
   ids['new-object'].click();
   await settle();

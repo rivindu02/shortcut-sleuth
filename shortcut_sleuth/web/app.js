@@ -42,7 +42,10 @@ function modelCard(architecture) {
   choice.value = model.id;
   choice.addEventListener("change", () => {state.selected[architecture] = choice.value; render();});
   card.append(choice);
-  if (!state.example) return card;
+  if (!state.example) {
+    card.append(element("p", "model-note", "Computing predictions for the paired object…"));
+    return card;
+  }
   const paired = state.example.predictions[model.id];
   const p = paired[state.background];
   const predictions = paired.map(row => row.indexOf(Math.max(...row)));
@@ -67,6 +70,7 @@ function modelCard(architecture) {
 }
 
 function render() {
+  $("specimen-image").hidden = !state.example;
   document.querySelectorAll("[data-shape]").forEach(b => b.setAttribute("aria-pressed", String(Number(b.dataset.shape) === state.shape)));
   document.querySelectorAll("[data-background]").forEach(b => b.setAttribute("aria-pressed", String(Number(b.dataset.background) === state.background)));
   if (state.example) {
@@ -85,6 +89,9 @@ function render() {
       button.addEventListener("click", () => {state.background = b; render();});
       return button;
     }));
+  } else {
+    $("paired-images").replaceChildren();
+    $("object-id").textContent = "Rendering paired object…";
   }
   $("baseline-prediction").textContent = `Background says: ${names[state.background]}`;
   $("model-cards").replaceChildren(modelCard("cnn"), modelCard("vit"));
@@ -92,6 +99,9 @@ function render() {
 
 async function loadExample() {
   const request = ++state.request;
+  state.example = null;
+  render();
+  $("specimen-image").setAttribute("aria-busy", "true");
   $("error").hidden = true;
   $("new-object").disabled = true;
   try {
@@ -104,7 +114,10 @@ async function loadExample() {
     $("error").textContent = error.message;
     $("error").hidden = false;
   } finally {
-    if (request === state.request) $("new-object").disabled = false;
+    if (request === state.request) {
+      $("new-object").disabled = false;
+      $("specimen-image").setAttribute("aria-busy", "false");
+    }
   }
 }
 
