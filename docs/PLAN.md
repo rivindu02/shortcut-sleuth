@@ -21,7 +21,7 @@ Deliver a reproducible experiment and an interactive comparison of background sh
 | 4. Interactive comparison | Side-by-side predictions, background controls and comparison charts | The application uses real checkpoint predictions, identifies the training condition and matches offline inference on fixed examples |
 | 5. Results and reproduction | Results report, limitations, figures and verified commands | The pipeline can be reproduced; the README states measured findings and links to evidence |
 
-Current verification: milestones 1, 2 and 4 are complete, including scratch-model learning, checkpoint round trips, the four-run smoke pipeline and real desktop/mobile browser checks. Milestone 3 awaits the development gates, freeze and main matrix. Milestone 5 publishes data/control/smoke evidence, development failures and reproduction commands; primary model results remain incomplete. See [RESULTS.md](RESULTS.md).
+Current verification: milestones 1, 2 and 4 are complete, including scratch-model learning, checkpoint round trips, the four-run smoke pipeline and real desktop/mobile browser checks. All development gates passed and v1 is frozen; milestone 3 awaits the main matrix. Milestone 5 publishes data/control/smoke evidence, development failures and reproduction commands; primary model results remain incomplete. See [RESULTS.md](RESULTS.md).
 
 ## Proposed implementation
 

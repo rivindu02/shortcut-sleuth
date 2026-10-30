@@ -1,8 +1,8 @@
-# Experiment protocol — candidate v1, revision 3
+# Experiment protocol — frozen v1, revision 3
 
 Freeze this protocol and record its Git commit before the full experiment. Changes made after examining final test results require a new experiment version and fresh held-out examples.
 
-**Implementation status:** candidate v1, not frozen. Data, analytic controls, scratch-model learning, smoke runs and real browser checks are verified. All four 60-epoch development gates passed before the full study. See [RESULTS.md](RESULTS.md). The implementation details below specify the candidate before any final-study test predictions are examined.
+**Implementation status:** [v1 is frozen](../configs/frozen-v1.json). Data, analytic controls, scratch-model learning, smoke runs and real browser checks are verified. All four 60-epoch development gates passed before the full study. See [RESULTS.md](RESULTS.md). The implementation and recipe below were frozen before any final-study test predictions were examined.
 
 ## Question and hypothesis
 

@@ -2,7 +2,7 @@
 
 ## Release status
 
-The complete smoke pipeline and real browser application have been executed with scratch-trained CNN and ViT checkpoints. Model learning, parameter counts, checkpoint reloads and shared inference have been verified. **All four development gates have passed; the main three-seed study is pending freeze and execution.** Development failures are retained rather than hidden.
+The complete smoke pipeline and real browser application have been executed with scratch-trained CNN and ViT checkpoints. Model learning, parameter counts, checkpoint reloads and shared inference have been verified. **All four development gates have passed and v1 is frozen; the main three-seed study is pending execution.** Development failures are retained rather than hidden.
 
 | Component | Implementation | Executed verification |
 | --- | --- | --- |
@@ -12,7 +12,7 @@ The complete smoke pipeline and real browser application have been executed with
 | CNN and ViT | Complete | Runtime parameter counts and finite gradients passed |
 | Training, checkpoint reload and evaluation | Complete | Round-trip checks and all four smoke runs passed |
 | Tiny balanced overfit | Complete | Both models fit 27/27 renders at learning rate 0.0003; the failed 0.003 attempt is preserved |
-| Twelve-run study | Pipeline complete | Not frozen or executed |
+| Twelve-run study | Frozen | Pending execution |
 | Interactive application | Complete | HTTP handlers and five interface state checks passed |
 | Browser rendering and socket HTTP | Complete | Real Chromium desktop/mobile, both training conditions and checkpoint-free mode passed |
 | Python distribution | Complete | Wheel and source archive built; installed wheel controls and assets exercised |
@@ -66,8 +66,7 @@ The [development report](../results/development/REPORT.md) and [validation curve
 
 ## Remaining study work
 
-1. Freeze and commit the configuration and implementation after the specified learning gates pass.
-2. Execute all 12 runs with data seed 2026, preserving outcomes and failures.
-3. Publish per-seed reports, resource measurements and real checkpoint demo evidence. Keep large artifacts outside Git and provide hashes if distributing them.
+1. Execute all 12 runs using the committed frozen configuration and data seed 2026, preserving outcomes and failures.
+2. Publish per-seed reports, resource measurements and real checkpoint demo evidence. Keep large artifacts outside Git and provide hashes if distributing them.
 
 If development checks fail, investigate using training/validation only. Preserve inconclusive and negative results. No primary-study architecture ranking is justified by the evidence currently published.

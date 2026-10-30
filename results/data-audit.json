@@ -2,7 +2,7 @@
   "cross_split_duplicate_foregrounds": 0,
   "foreground_swap_comparisons": 31200,
   "passed": true,
-  "protocol": "background-v1-development",
+  "protocol": "background-v1",
   "renderer": "pixel-centres-v1",
   "seed": 2026,
   "splits": {

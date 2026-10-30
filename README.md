@@ -4,7 +4,7 @@
 
 A controlled CNN vs. Vision Transformer experiment with an interactive background-swap lab. Train both models from scratch, keep each foreground pixel fixed, and measure what happens when the background shortcut changes.
 
-**Status:** the smoke matrix, both scratch models, checkpoint inference, all automated checks and real desktop/mobile browser behaviour have been verified. All four development learning gates passed; earlier failures and revisions are preserved. **The final 12-run study is pending protocol freeze and execution.** See the [verification report](docs/RESULTS.md).
+**Status:** the smoke matrix, both scratch models, checkpoint inference, all automated checks and real desktop/mobile browser behaviour have been verified. All four development learning gates passed, and [study v1 is frozen](configs/frozen-v1.json). **The final 12-run study is pending execution.** Earlier failures and revisions are preserved in the [verification report](docs/RESULTS.md).
 
 <p align="center"><img src="results/browser-smoke/lab-desktop.png" width="1100" alt="Actual background-swap lab with CNN and ViT probabilities from four trained smoke checkpoints"></p>
 
@@ -92,29 +92,25 @@ These validate the intervention and metrics; they are not trained-model results.
 
 ## Full study
 
-Verify the shared recipe on separate development training/validation objects first. These commands do not evaluate the final study test set:
+Use the committed [frozen configuration](configs/frozen-v1.json) to reproduce the primary study:
+
+```bash
+python -m shortcut_sleuth prepare --config configs/frozen-v1.json --output artifacts/full-data
+python -m shortcut_sleuth audit --data artifacts/full-data --output artifacts/full-data-audit.json
+python -m shortcut_sleuth matrix --config configs/frozen-v1.json \
+  --data artifacts/full-data --runs artifacts/full-runs --evaluate
+python -m shortcut_sleuth report --runs artifacts/full-runs --output artifacts/full-report
+```
+
+The freeze records passed learning gates on separate development objects: both architectures and controls reached at least 80% final validation accuracy. To reproduce the development checks and freeze procedure without replacing the published configuration:
 
 ```bash
 python -m shortcut_sleuth prepare --config configs/development.json --output artifacts/development-data
 python -m shortcut_sleuth matrix --config configs/development.json \
   --data artifacts/development-data --runs artifacts/development-runs
-```
-
-Inspect curves and failures. Both architectures and both controls must reach 80% validation accuracy with the shared recipe before freezing. This gate is specified before final-test evaluation. If it fails, investigate and revise the candidate configuration using development data only.
-
-```bash
 python -m shortcut_sleuth freeze --config configs/full.json \
   --preflight artifacts/overfit.json --validation-runs artifacts/development-runs \
-  --output configs/frozen-v1.json
-# Commit the frozen configuration before the main study.
-git add configs/frozen-v1.json
-git commit -m "experiment: freeze background study v1"
-
-python -m shortcut_sleuth prepare --config configs/frozen-v1.json --output artifacts/full-data
-python -m shortcut_sleuth audit --data artifacts/full-data --output artifacts/full-data-audit.json
-python -m shortcut_sleuth matrix --config configs/frozen-v1.json \
-  --data artifacts/full-data --runs artifacts/full-runs --evaluate
-python -m shortcut_sleuth report --runs artifacts/full-runs --output results/background-v1
+  --output artifacts/frozen-reproduction.json
 ```
 
 This runs 2 architectures × 2 conditions × 3 seeds = **12 runs**, with 60 epochs each. The original 30-epoch candidate underfit during development; the [protocol history](docs/EXPERIMENT_PROTOCOL.md#candidate-revision-history) explains the change. CPU is the default. After inspecting GPU availability, pass an explicit device such as `--device cuda:0` where appropriate. The project never automatically chooses a GPU. Full training caches about 600 MiB of deterministic input tensors in system RAM, in addition to model/runtime memory.
