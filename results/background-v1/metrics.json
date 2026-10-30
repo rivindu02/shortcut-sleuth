@@ -1,0 +1,1408 @@
+{
+  "full_matrix_complete": true,
+  "groups": {
+    "cnn/correlated": {
+      "metrics": {
+        "background_flip_rate": {
+          "mean": 0.0032222222222222222,
+          "sample_std": 0.003595264374969652
+        },
+        "conflicting_accuracy": {
+          "mean": 0.9982777777777777,
+          "sample_std": 0.0018584142981864407
+        },
+        "group_accuracy": {
+          "mean": [
+            [
+              1.0,
+              1.0,
+              1.0
+            ],
+            [
+              0.9986666666666667,
+              1.0,
+              0.9916666666666667
+            ],
+            [
+              1.0,
+              0.9993333333333334,
+              1.0
+            ]
+          ],
+          "sample_std": [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0005773502691896263,
+              0.0,
+              0.009451631252505225
+            ],
+            [
+              0.0,
+              0.0011547005383792527,
+              0.0
+            ]
+          ]
+        },
+        "independent_accuracy": {
+          "mean": 0.9988518518518519,
+          "sample_std": 0.001238942865457585
+        },
+        "training_like_accuracy": {
+          "mean": 0.9999138888888889,
+          "sample_std": 9.292071490938517e-05
+        },
+        "training_like_minus_conflicting_pp": {
+          "mean": 0.16361111111110604,
+          "sample_std": 0.17654935832770555
+        },
+        "training_like_minus_independent_pp": {
+          "mean": 0.10620370370370003,
+          "sample_std": 0.11460221505481999
+        },
+        "true_class_probability_range": {
+          "mean": 0.01388631097641256,
+          "sample_std": 0.009090810351167383
+        },
+        "worst_group_accuracy": {
+          "mean": 0.9916666666666667,
+          "sample_std": 0.009451631252505225
+        }
+      },
+      "per_seed": [
+        {
+          "background_flip_rate": 0.0006666666666666666,
+          "conflicting_accuracy": 0.9996666666666667,
+          "group_accuracy": [
+            [
+              1.0,
+              1.0,
+              1.0
+            ],
+            [
+              0.999,
+              1.0,
+              0.999
+            ],
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "independent_accuracy": 0.9997777777777778,
+          "objects": 3000,
+          "training_like_accuracy": 0.9999833333333332,
+          "training_like_minus_conflicting_pp": 0.03166666666665208,
+          "training_like_minus_independent_pp": 0.02055555555554589,
+          "true_class_probability_range": 0.0059559063414732615,
+          "worst_group_accuracy": 0.999
+        },
+        {
+          "background_flip_rate": 0.0016666666666666668,
+          "conflicting_accuracy": 0.999,
+          "group_accuracy": [
+            [
+              1.0,
+              1.0,
+              1.0
+            ],
+            [
+              0.999,
+              1.0,
+              0.995
+            ],
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "independent_accuracy": 0.9993333333333333,
+          "objects": 3000,
+          "training_like_accuracy": 0.9999500000000001,
+          "training_like_minus_conflicting_pp": 0.09500000000001174,
+          "training_like_minus_independent_pp": 0.06166666666668208,
+          "true_class_probability_range": 0.011895478993654252,
+          "worst_group_accuracy": 0.995
+        },
+        {
+          "background_flip_rate": 0.007333333333333333,
+          "conflicting_accuracy": 0.9961666666666666,
+          "group_accuracy": [
+            [
+              1.0,
+              1.0,
+              1.0
+            ],
+            [
+              0.998,
+              1.0,
+              0.981
+            ],
+            [
+              1.0,
+              0.998,
+              1.0
+            ]
+          ],
+          "independent_accuracy": 0.9974444444444445,
+          "objects": 3000,
+          "training_like_accuracy": 0.9998083333333332,
+          "training_like_minus_conflicting_pp": 0.3641666666666543,
+          "training_like_minus_independent_pp": 0.2363888888888721,
+          "true_class_probability_range": 0.023807547594110173,
+          "worst_group_accuracy": 0.981
+        }
+      ],
+      "seed_count": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ]
+    },
+    "cnn/independent": {
+      "metrics": {
+        "background_flip_rate": {
+          "mean": 0.0,
+          "sample_std": 0.0
+        },
+        "conflicting_accuracy": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "group_accuracy": {
+          "mean": [
+            [
+              1.0,
+              1.0,
+              1.0
+            ],
+            [
+              1.0,
+              1.0,
+              1.0
+            ],
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "sample_std": [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "independent_accuracy": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "training_like_accuracy": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "training_like_minus_conflicting_pp": {
+          "mean": 0.0,
+          "sample_std": 0.0
+        },
+        "training_like_minus_independent_pp": {
+          "mean": 0.0,
+          "sample_std": 0.0
+        },
+        "true_class_probability_range": {
+          "mean": 0.0002275514072842068,
+          "sample_std": 9.134276318171247e-05
+        },
+        "worst_group_accuracy": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        }
+      },
+      "per_seed": [
+        {
+          "background_flip_rate": 0.0,
+          "conflicting_accuracy": 1.0,
+          "group_accuracy": [
+            [
+              1.0,
+              1.0,
+              1.0
+            ],
+            [
+              1.0,
+              1.0,
+              1.0
+            ],
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "independent_accuracy": 1.0,
+          "objects": 3000,
+          "training_like_accuracy": 1.0,
+          "training_like_minus_conflicting_pp": 0.0,
+          "training_like_minus_independent_pp": 0.0,
+          "true_class_probability_range": 0.00014460293451944986,
+          "worst_group_accuracy": 1.0
+        },
+        {
+          "background_flip_rate": 0.0,
+          "conflicting_accuracy": 1.0,
+          "group_accuracy": [
+            [
+              1.0,
+              1.0,
+              1.0
+            ],
+            [
+              1.0,
+              1.0,
+              1.0
+            ],
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "independent_accuracy": 1.0,
+          "objects": 3000,
+          "training_like_accuracy": 1.0,
+          "training_like_minus_conflicting_pp": 0.0,
+          "training_like_minus_independent_pp": 0.0,
+          "true_class_probability_range": 0.00021260611216227212,
+          "worst_group_accuracy": 1.0
+        },
+        {
+          "background_flip_rate": 0.0,
+          "conflicting_accuracy": 1.0,
+          "group_accuracy": [
+            [
+              1.0,
+              1.0,
+              1.0
+            ],
+            [
+              1.0,
+              1.0,
+              1.0
+            ],
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "independent_accuracy": 1.0,
+          "objects": 3000,
+          "training_like_accuracy": 1.0,
+          "training_like_minus_conflicting_pp": 0.0,
+          "training_like_minus_independent_pp": 0.0,
+          "true_class_probability_range": 0.00032544517517089846,
+          "worst_group_accuracy": 1.0
+        }
+      ],
+      "seed_count": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ]
+    },
+    "vit/correlated": {
+      "metrics": {
+        "background_flip_rate": {
+          "mean": 0.9643333333333333,
+          "sample_std": 0.03441091558083148
+        },
+        "conflicting_accuracy": {
+          "mean": 0.24322222222222223,
+          "sample_std": 0.05234562842124273
+        },
+        "group_accuracy": {
+          "mean": [
+            [
+              0.9926666666666666,
+              0.012666666666666666,
+              0.5216666666666666
+            ],
+            [
+              0.19499999999999998,
+              0.9956666666666667,
+              0.082
+            ],
+            [
+              0.5680000000000001,
+              0.08,
+              0.989
+            ]
+          ],
+          "sample_std": [
+            [
+              0.007571877794400371,
+              0.012055427546683418,
+              0.03647373484212072
+            ],
+            [
+              0.042567593307585534,
+              0.0037859388972001857,
+              0.0663023378170031
+            ],
+            [
+              0.10219589032832976,
+              0.08,
+              0.004358898943540678
+            ]
+          ]
+        },
+        "independent_accuracy": {
+          "mean": 0.492962962962963,
+          "sample_std": 0.03340812596747143
+        },
+        "training_like_accuracy": {
+          "mean": 0.9549833333333332,
+          "sample_std": 0.0017907361924949215
+        },
+        "training_like_minus_conflicting_pp": {
+          "mean": 71.1761111111111,
+          "sample_std": 5.397990259586672
+        },
+        "training_like_minus_independent_pp": {
+          "mean": 46.20203703703701,
+          "sample_std": 3.503958589556265
+        },
+        "true_class_probability_range": {
+          "mean": 0.9008850047359012,
+          "sample_std": 0.044576111499528885
+        },
+        "worst_group_accuracy": {
+          "mean": 0.012666666666666666,
+          "sample_std": 0.012055427546683418
+        }
+      },
+      "per_seed": [
+        {
+          "background_flip_rate": 1.0,
+          "conflicting_accuracy": 0.19516666666666665,
+          "group_accuracy": [
+            [
+              0.996,
+              0.0,
+              0.508
+            ],
+            [
+              0.149,
+              1.0,
+              0.006
+            ],
+            [
+              0.508,
+              0.0,
+              0.992
+            ]
+          ],
+          "independent_accuracy": 0.4621111111111111,
+          "objects": 3000,
+          "training_like_accuracy": 0.9559583333333331,
+          "training_like_minus_conflicting_pp": 76.07916666666665,
+          "training_like_minus_independent_pp": 49.3847222222222,
+          "true_class_probability_range": 0.9449306113016016,
+          "worst_group_accuracy": 0.0
+        },
+        {
+          "background_flip_rate": 0.9616666666666667,
+          "conflicting_accuracy": 0.2355,
+          "group_accuracy": [
+            [
+              0.998,
+              0.014,
+              0.494
+            ],
+            [
+              0.203,
+              0.993,
+              0.112
+            ],
+            [
+              0.51,
+              0.08,
+              0.991
+            ]
+          ],
+          "independent_accuracy": 0.48833333333333334,
+          "objects": 3000,
+          "training_like_accuracy": 0.9560749999999998,
+          "training_like_minus_conflicting_pp": 72.05749999999998,
+          "training_like_minus_independent_pp": 46.774166666666645,
+          "true_class_probability_range": 0.9019277195073471,
+          "worst_group_accuracy": 0.014
+        },
+        {
+          "background_flip_rate": 0.9313333333333333,
+          "conflicting_accuracy": 0.299,
+          "group_accuracy": [
+            [
+              0.984,
+              0.024,
+              0.563
+            ],
+            [
+              0.233,
+              0.994,
+              0.128
+            ],
+            [
+              0.686,
+              0.16,
+              0.984
+            ]
+          ],
+          "independent_accuracy": 0.5284444444444445,
+          "objects": 3000,
+          "training_like_accuracy": 0.9529166666666664,
+          "training_like_minus_conflicting_pp": 65.39166666666665,
+          "training_like_minus_independent_pp": 42.447222222222194,
+          "true_class_probability_range": 0.8557966833987545,
+          "worst_group_accuracy": 0.024
+        }
+      ],
+      "seed_count": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ]
+    },
+    "vit/independent": {
+      "metrics": {
+        "background_flip_rate": {
+          "mean": 0.022333333333333334,
+          "sample_std": 0.021656407827707714
+        },
+        "conflicting_accuracy": {
+          "mean": 0.977,
+          "sample_std": 0.02901771489586622
+        },
+        "group_accuracy": {
+          "mean": [
+            [
+              0.9933333333333333,
+              0.9933333333333333,
+              0.9940000000000001
+            ],
+            [
+              0.9666666666666667,
+              0.9653333333333333,
+              0.9646666666666667
+            ],
+            [
+              0.9716666666666667,
+              0.9716666666666667,
+              0.9703333333333334
+            ]
+          ],
+          "sample_std": [
+            [
+              0.0066583281184794,
+              0.004725815626252613,
+              0.006244997998398404
+            ],
+            [
+              0.03962743157628729,
+              0.033201405592735544,
+              0.038682468035704895
+            ],
+            [
+              0.043015501081974286,
+              0.04214656965084265,
+              0.04359281286328437
+            ]
+          ]
+        },
+        "independent_accuracy": {
+          "mean": 0.9767777777777779,
+          "sample_std": 0.028583211855912866
+        },
+        "training_like_accuracy": {
+          "mean": 0.9763666666666667,
+          "sample_std": 0.02777991755647317
+        },
+        "training_like_minus_conflicting_pp": {
+          "mean": -0.06333333333333006,
+          "sample_std": 0.12567318727556262
+        },
+        "training_like_minus_independent_pp": {
+          "mean": -0.041111111111110286,
+          "sample_std": 0.08157733209115132
+        },
+        "true_class_probability_range": {
+          "mean": 0.026025778185398345,
+          "sample_std": 0.027511556031441523
+        },
+        "worst_group_accuracy": {
+          "mean": 0.963,
+          "sample_std": 0.03724244889907211
+        }
+      },
+      "per_seed": [
+        {
+          "background_flip_rate": 0.04733333333333333,
+          "conflicting_accuracy": 0.9435,
+          "group_accuracy": [
+            [
+              0.986,
+              0.988,
+              0.987
+            ],
+            [
+              0.921,
+              0.927,
+              0.92
+            ],
+            [
+              0.922,
+              0.923,
+              0.92
+            ]
+          ],
+          "independent_accuracy": 0.9437777777777778,
+          "objects": 3000,
+          "training_like_accuracy": 0.9442916666666666,
+          "training_like_minus_conflicting_pp": 0.0791666666666635,
+          "training_like_minus_independent_pp": 0.05138888888888138,
+          "true_class_probability_range": 0.057764920835984716,
+          "worst_group_accuracy": 0.92
+        },
+        {
+          "background_flip_rate": 0.009333333333333334,
+          "conflicting_accuracy": 0.9943333333333333,
+          "group_accuracy": [
+            [
+              0.999,
+              0.995,
+              0.999
+            ],
+            [
+              0.992,
+              0.984,
+              0.987
+            ],
+            [
+              0.997,
+              0.996,
+              0.995
+            ]
+          ],
+          "independent_accuracy": 0.9937777777777778,
+          "objects": 3000,
+          "training_like_accuracy": 0.99275,
+          "training_like_minus_conflicting_pp": -0.158333333333327,
+          "training_like_minus_independent_pp": -0.10277777777777386,
+          "true_class_probability_range": 0.008991804384393617,
+          "worst_group_accuracy": 0.984
+        },
+        {
+          "background_flip_rate": 0.010333333333333333,
+          "conflicting_accuracy": 0.9931666666666666,
+          "group_accuracy": [
+            [
+              0.995,
+              0.997,
+              0.996
+            ],
+            [
+              0.987,
+              0.985,
+              0.987
+            ],
+            [
+              0.996,
+              0.996,
+              0.996
+            ]
+          ],
+          "independent_accuracy": 0.9927777777777778,
+          "objects": 3000,
+          "training_like_accuracy": 0.9920583333333334,
+          "training_like_minus_conflicting_pp": -0.11083333333332668,
+          "training_like_minus_independent_pp": -0.07194444444443837,
+          "true_class_probability_range": 0.011320609335816698,
+          "worst_group_accuracy": 0.985
+        }
+      ],
+      "seed_count": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  "protocol": "background-v1",
+  "runs": [
+    {
+      "architecture": "cnn",
+      "checkpoint_sha256": "3a59532ec047baea614885be62674c14a2f53e9946a79ab9164ff2e47f6988db",
+      "code": {
+        "commit": "880540aa9b7d645b5b12f8c413d7c045edea668e",
+        "dirty": false
+      },
+      "condition": "correlated",
+      "environment": {
+        "cuda": "13.0",
+        "dependencies": {
+          "Pillow": "12.3.0",
+          "numpy": "2.2.6",
+          "torch": "2.13.0"
+        },
+        "device": "cuda:0",
+        "hardware": "Quadro RTX 5000",
+        "machine": "x86_64",
+        "python": "3.10.20",
+        "system": "Linux"
+      },
+      "experiment_sha256": "2d9eb814556a693f568e4b760e2e4d8d8459d491e90db807aefddb10cc96dc40",
+      "implementation_sha256": "5ff3b28e7b867b3a5b17100f3ae06e6bda9cbde59929c43d7b227c228273600f",
+      "metrics": {
+        "background_flip_rate": 0.0006666666666666666,
+        "conflicting_accuracy": 0.9996666666666667,
+        "group_accuracy": [
+          [
+            1.0,
+            1.0,
+            1.0
+          ],
+          [
+            0.999,
+            1.0,
+            0.999
+          ],
+          [
+            1.0,
+            1.0,
+            1.0
+          ]
+        ],
+        "independent_accuracy": 0.9997777777777778,
+        "objects": 3000,
+        "training_like_accuracy": 0.9999833333333332,
+        "training_like_minus_conflicting_pp": 0.03166666666665208,
+        "training_like_minus_independent_pp": 0.02055555555554589,
+        "true_class_probability_range": 0.0059559063414732615,
+        "worst_group_accuracy": 0.999
+      },
+      "parameters": 152823,
+      "peak_gpu_memory_bytes": 545628160,
+      "predictions_sha256": "7a24eb676587aa6c03ce9f044898b205bf27d7eccca6d8fc6f89d5a09746ca79",
+      "protocol": "background-v1",
+      "renderer": "pixel-centres-v1",
+      "runtime_seconds": 103.09310242696665,
+      "schema_version": 1,
+      "seed": 0,
+      "stage": "study",
+      "test_manifest_sha256": "b667ba087bbd8a3716f85e68fa12a8a8c6130b47ff01a9c55632594e9df413a0"
+    },
+    {
+      "architecture": "cnn",
+      "checkpoint_sha256": "a1ed605af153dc97db728b812e7a9775c28cc64fb6333d1a5753de6229db51c0",
+      "code": {
+        "commit": "880540aa9b7d645b5b12f8c413d7c045edea668e",
+        "dirty": false
+      },
+      "condition": "correlated",
+      "environment": {
+        "cuda": "13.0",
+        "dependencies": {
+          "Pillow": "12.3.0",
+          "numpy": "2.2.6",
+          "torch": "2.13.0"
+        },
+        "device": "cuda:0",
+        "hardware": "Quadro RTX 5000",
+        "machine": "x86_64",
+        "python": "3.10.20",
+        "system": "Linux"
+      },
+      "experiment_sha256": "2d9eb814556a693f568e4b760e2e4d8d8459d491e90db807aefddb10cc96dc40",
+      "implementation_sha256": "5ff3b28e7b867b3a5b17100f3ae06e6bda9cbde59929c43d7b227c228273600f",
+      "metrics": {
+        "background_flip_rate": 0.0016666666666666668,
+        "conflicting_accuracy": 0.999,
+        "group_accuracy": [
+          [
+            1.0,
+            1.0,
+            1.0
+          ],
+          [
+            0.999,
+            1.0,
+            0.995
+          ],
+          [
+            1.0,
+            1.0,
+            1.0
+          ]
+        ],
+        "independent_accuracy": 0.9993333333333333,
+        "objects": 3000,
+        "training_like_accuracy": 0.9999500000000001,
+        "training_like_minus_conflicting_pp": 0.09500000000001174,
+        "training_like_minus_independent_pp": 0.06166666666668208,
+        "true_class_probability_range": 0.011895478993654252,
+        "worst_group_accuracy": 0.995
+      },
+      "parameters": 152823,
+      "peak_gpu_memory_bytes": 545628160,
+      "predictions_sha256": "8dfbe3a5bffc78d3a90e0403467ea34b04343482f8476110e2f82980cbe9a3a9",
+      "protocol": "background-v1",
+      "renderer": "pixel-centres-v1",
+      "runtime_seconds": 101.44226809695829,
+      "schema_version": 1,
+      "seed": 1,
+      "stage": "study",
+      "test_manifest_sha256": "b667ba087bbd8a3716f85e68fa12a8a8c6130b47ff01a9c55632594e9df413a0"
+    },
+    {
+      "architecture": "cnn",
+      "checkpoint_sha256": "4677489f9258d29b9b03334a48f33fdf389f3f92a8730d59542ff63e159e46fa",
+      "code": {
+        "commit": "880540aa9b7d645b5b12f8c413d7c045edea668e",
+        "dirty": false
+      },
+      "condition": "correlated",
+      "environment": {
+        "cuda": "13.0",
+        "dependencies": {
+          "Pillow": "12.3.0",
+          "numpy": "2.2.6",
+          "torch": "2.13.0"
+        },
+        "device": "cuda:0",
+        "hardware": "Quadro RTX 5000",
+        "machine": "x86_64",
+        "python": "3.10.20",
+        "system": "Linux"
+      },
+      "experiment_sha256": "2d9eb814556a693f568e4b760e2e4d8d8459d491e90db807aefddb10cc96dc40",
+      "implementation_sha256": "5ff3b28e7b867b3a5b17100f3ae06e6bda9cbde59929c43d7b227c228273600f",
+      "metrics": {
+        "background_flip_rate": 0.007333333333333333,
+        "conflicting_accuracy": 0.9961666666666666,
+        "group_accuracy": [
+          [
+            1.0,
+            1.0,
+            1.0
+          ],
+          [
+            0.998,
+            1.0,
+            0.981
+          ],
+          [
+            1.0,
+            0.998,
+            1.0
+          ]
+        ],
+        "independent_accuracy": 0.9974444444444445,
+        "objects": 3000,
+        "training_like_accuracy": 0.9998083333333332,
+        "training_like_minus_conflicting_pp": 0.3641666666666543,
+        "training_like_minus_independent_pp": 0.2363888888888721,
+        "true_class_probability_range": 0.023807547594110173,
+        "worst_group_accuracy": 0.981
+      },
+      "parameters": 152823,
+      "peak_gpu_memory_bytes": 545628160,
+      "predictions_sha256": "87f9f2696ff9507bf0ba88a0b69ca46a0987daa04ea6dbb33a1b285507dcbfab",
+      "protocol": "background-v1",
+      "renderer": "pixel-centres-v1",
+      "runtime_seconds": 101.87536457297392,
+      "schema_version": 1,
+      "seed": 2,
+      "stage": "study",
+      "test_manifest_sha256": "b667ba087bbd8a3716f85e68fa12a8a8c6130b47ff01a9c55632594e9df413a0"
+    },
+    {
+      "architecture": "cnn",
+      "checkpoint_sha256": "0741827dededce8cdf03875fa71a5bf75fb0ed08014b162c21f1bd63bf190409",
+      "code": {
+        "commit": "880540aa9b7d645b5b12f8c413d7c045edea668e",
+        "dirty": false
+      },
+      "condition": "independent",
+      "environment": {
+        "cuda": "13.0",
+        "dependencies": {
+          "Pillow": "12.3.0",
+          "numpy": "2.2.6",
+          "torch": "2.13.0"
+        },
+        "device": "cuda:0",
+        "hardware": "Quadro RTX 5000",
+        "machine": "x86_64",
+        "python": "3.10.20",
+        "system": "Linux"
+      },
+      "experiment_sha256": "2d9eb814556a693f568e4b760e2e4d8d8459d491e90db807aefddb10cc96dc40",
+      "implementation_sha256": "5ff3b28e7b867b3a5b17100f3ae06e6bda9cbde59929c43d7b227c228273600f",
+      "metrics": {
+        "background_flip_rate": 0.0,
+        "conflicting_accuracy": 1.0,
+        "group_accuracy": [
+          [
+            1.0,
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0,
+            1.0
+          ]
+        ],
+        "independent_accuracy": 1.0,
+        "objects": 3000,
+        "training_like_accuracy": 1.0,
+        "training_like_minus_conflicting_pp": 0.0,
+        "training_like_minus_independent_pp": 0.0,
+        "true_class_probability_range": 0.00014460293451944986,
+        "worst_group_accuracy": 1.0
+      },
+      "parameters": 152823,
+      "peak_gpu_memory_bytes": 545628160,
+      "predictions_sha256": "32e0d56ddbdd8424a27395ee81ab44c35ce934fdb75179dc8dffdc8eb2aa4c18",
+      "protocol": "background-v1",
+      "renderer": "pixel-centres-v1",
+      "runtime_seconds": 101.82188165001571,
+      "schema_version": 1,
+      "seed": 0,
+      "stage": "study",
+      "test_manifest_sha256": "b667ba087bbd8a3716f85e68fa12a8a8c6130b47ff01a9c55632594e9df413a0"
+    },
+    {
+      "architecture": "cnn",
+      "checkpoint_sha256": "3b0f367d77c95b9afc4853879a703b9d0ae8704ccbe2ede5c3cd127fa64324c7",
+      "code": {
+        "commit": "880540aa9b7d645b5b12f8c413d7c045edea668e",
+        "dirty": false
+      },
+      "condition": "independent",
+      "environment": {
+        "cuda": "13.0",
+        "dependencies": {
+          "Pillow": "12.3.0",
+          "numpy": "2.2.6",
+          "torch": "2.13.0"
+        },
+        "device": "cuda:0",
+        "hardware": "Quadro RTX 5000",
+        "machine": "x86_64",
+        "python": "3.10.20",
+        "system": "Linux"
+      },
+      "experiment_sha256": "2d9eb814556a693f568e4b760e2e4d8d8459d491e90db807aefddb10cc96dc40",
+      "implementation_sha256": "5ff3b28e7b867b3a5b17100f3ae06e6bda9cbde59929c43d7b227c228273600f",
+      "metrics": {
+        "background_flip_rate": 0.0,
+        "conflicting_accuracy": 1.0,
+        "group_accuracy": [
+          [
+            1.0,
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0,
+            1.0
+          ]
+        ],
+        "independent_accuracy": 1.0,
+        "objects": 3000,
+        "training_like_accuracy": 1.0,
+        "training_like_minus_conflicting_pp": 0.0,
+        "training_like_minus_independent_pp": 0.0,
+        "true_class_probability_range": 0.00021260611216227212,
+        "worst_group_accuracy": 1.0
+      },
+      "parameters": 152823,
+      "peak_gpu_memory_bytes": 545628160,
+      "predictions_sha256": "732407ad02704e299cada6c9749733d0a5adc0c455f9f3a6fa7c64d96b182ad2",
+      "protocol": "background-v1",
+      "renderer": "pixel-centres-v1",
+      "runtime_seconds": 102.13647677795961,
+      "schema_version": 1,
+      "seed": 1,
+      "stage": "study",
+      "test_manifest_sha256": "b667ba087bbd8a3716f85e68fa12a8a8c6130b47ff01a9c55632594e9df413a0"
+    },
+    {
+      "architecture": "cnn",
+      "checkpoint_sha256": "6f2f15524f92cef6c1d04c755d164e36b5099f65e2ed799de8e13fcf8534043e",
+      "code": {
+        "commit": "880540aa9b7d645b5b12f8c413d7c045edea668e",
+        "dirty": false
+      },
+      "condition": "independent",
+      "environment": {
+        "cuda": "13.0",
+        "dependencies": {
+          "Pillow": "12.3.0",
+          "numpy": "2.2.6",
+          "torch": "2.13.0"
+        },
+        "device": "cuda:0",
+        "hardware": "Quadro RTX 5000",
+        "machine": "x86_64",
+        "python": "3.10.20",
+        "system": "Linux"
+      },
+      "experiment_sha256": "2d9eb814556a693f568e4b760e2e4d8d8459d491e90db807aefddb10cc96dc40",
+      "implementation_sha256": "5ff3b28e7b867b3a5b17100f3ae06e6bda9cbde59929c43d7b227c228273600f",
+      "metrics": {
+        "background_flip_rate": 0.0,
+        "conflicting_accuracy": 1.0,
+        "group_accuracy": [
+          [
+            1.0,
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0,
+            1.0
+          ]
+        ],
+        "independent_accuracy": 1.0,
+        "objects": 3000,
+        "training_like_accuracy": 1.0,
+        "training_like_minus_conflicting_pp": 0.0,
+        "training_like_minus_independent_pp": 0.0,
+        "true_class_probability_range": 0.00032544517517089846,
+        "worst_group_accuracy": 1.0
+      },
+      "parameters": 152823,
+      "peak_gpu_memory_bytes": 545628160,
+      "predictions_sha256": "ad13b58b3d74de40d8ecabe5feeea99d66dfc51db239e729a79994ac8115eb90",
+      "protocol": "background-v1",
+      "renderer": "pixel-centres-v1",
+      "runtime_seconds": 101.07520433596801,
+      "schema_version": 1,
+      "seed": 2,
+      "stage": "study",
+      "test_manifest_sha256": "b667ba087bbd8a3716f85e68fa12a8a8c6130b47ff01a9c55632594e9df413a0"
+    },
+    {
+      "architecture": "vit",
+      "checkpoint_sha256": "18720c016eaa5152e13b63433a5e4cc181f74bdda19a71c66c445acfc53b13cb",
+      "code": {
+        "commit": "880540aa9b7d645b5b12f8c413d7c045edea668e",
+        "dirty": false
+      },
+      "condition": "correlated",
+      "environment": {
+        "cuda": "13.0",
+        "dependencies": {
+          "Pillow": "12.3.0",
+          "numpy": "2.2.6",
+          "torch": "2.13.0"
+        },
+        "device": "cuda:0",
+        "hardware": "Quadro RTX 5000",
+        "machine": "x86_64",
+        "python": "3.10.20",
+        "system": "Linux"
+      },
+      "experiment_sha256": "2d9eb814556a693f568e4b760e2e4d8d8459d491e90db807aefddb10cc96dc40",
+      "implementation_sha256": "5ff3b28e7b867b3a5b17100f3ae06e6bda9cbde59929c43d7b227c228273600f",
+      "metrics": {
+        "background_flip_rate": 1.0,
+        "conflicting_accuracy": 0.19516666666666665,
+        "group_accuracy": [
+          [
+            0.996,
+            0.0,
+            0.508
+          ],
+          [
+            0.149,
+            1.0,
+            0.006
+          ],
+          [
+            0.508,
+            0.0,
+            0.992
+          ]
+        ],
+        "independent_accuracy": 0.4621111111111111,
+        "objects": 3000,
+        "training_like_accuracy": 0.9559583333333331,
+        "training_like_minus_conflicting_pp": 76.07916666666665,
+        "training_like_minus_independent_pp": 49.3847222222222,
+        "true_class_probability_range": 0.9449306113016016,
+        "worst_group_accuracy": 0.0
+      },
+      "parameters": 150787,
+      "peak_gpu_memory_bytes": 202231296,
+      "predictions_sha256": "6803fdf8584411d72f4c0a24477f67dbdec4cab60e393459657aff096cb210a5",
+      "protocol": "background-v1",
+      "renderer": "pixel-centres-v1",
+      "runtime_seconds": 140.149321496021,
+      "schema_version": 1,
+      "seed": 0,
+      "stage": "study",
+      "test_manifest_sha256": "b667ba087bbd8a3716f85e68fa12a8a8c6130b47ff01a9c55632594e9df413a0"
+    },
+    {
+      "architecture": "vit",
+      "checkpoint_sha256": "05792e89a2d8d6b41479d0d03acaf5c3b537fe07897ccb62fc08f6d00963eee0",
+      "code": {
+        "commit": "880540aa9b7d645b5b12f8c413d7c045edea668e",
+        "dirty": false
+      },
+      "condition": "correlated",
+      "environment": {
+        "cuda": "13.0",
+        "dependencies": {
+          "Pillow": "12.3.0",
+          "numpy": "2.2.6",
+          "torch": "2.13.0"
+        },
+        "device": "cuda:0",
+        "hardware": "Quadro RTX 5000",
+        "machine": "x86_64",
+        "python": "3.10.20",
+        "system": "Linux"
+      },
+      "experiment_sha256": "2d9eb814556a693f568e4b760e2e4d8d8459d491e90db807aefddb10cc96dc40",
+      "implementation_sha256": "5ff3b28e7b867b3a5b17100f3ae06e6bda9cbde59929c43d7b227c228273600f",
+      "metrics": {
+        "background_flip_rate": 0.9616666666666667,
+        "conflicting_accuracy": 0.2355,
+        "group_accuracy": [
+          [
+            0.998,
+            0.014,
+            0.494
+          ],
+          [
+            0.203,
+            0.993,
+            0.112
+          ],
+          [
+            0.51,
+            0.08,
+            0.991
+          ]
+        ],
+        "independent_accuracy": 0.48833333333333334,
+        "objects": 3000,
+        "training_like_accuracy": 0.9560749999999998,
+        "training_like_minus_conflicting_pp": 72.05749999999998,
+        "training_like_minus_independent_pp": 46.774166666666645,
+        "true_class_probability_range": 0.9019277195073471,
+        "worst_group_accuracy": 0.014
+      },
+      "parameters": 150787,
+      "peak_gpu_memory_bytes": 202231296,
+      "predictions_sha256": "b58b0e17a60c56809547e871a6df5af0a00fe501b0aab1653c4631ace01a0854",
+      "protocol": "background-v1",
+      "renderer": "pixel-centres-v1",
+      "runtime_seconds": 140.60517191898543,
+      "schema_version": 1,
+      "seed": 1,
+      "stage": "study",
+      "test_manifest_sha256": "b667ba087bbd8a3716f85e68fa12a8a8c6130b47ff01a9c55632594e9df413a0"
+    },
+    {
+      "architecture": "vit",
+      "checkpoint_sha256": "b57ed67839c6bb9ceab9268535bd64a2856580482afd1f72bcc329efb4aa0e22",
+      "code": {
+        "commit": "880540aa9b7d645b5b12f8c413d7c045edea668e",
+        "dirty": false
+      },
+      "condition": "correlated",
+      "environment": {
+        "cuda": "13.0",
+        "dependencies": {
+          "Pillow": "12.3.0",
+          "numpy": "2.2.6",
+          "torch": "2.13.0"
+        },
+        "device": "cuda:0",
+        "hardware": "Quadro RTX 5000",
+        "machine": "x86_64",
+        "python": "3.10.20",
+        "system": "Linux"
+      },
+      "experiment_sha256": "2d9eb814556a693f568e4b760e2e4d8d8459d491e90db807aefddb10cc96dc40",
+      "implementation_sha256": "5ff3b28e7b867b3a5b17100f3ae06e6bda9cbde59929c43d7b227c228273600f",
+      "metrics": {
+        "background_flip_rate": 0.9313333333333333,
+        "conflicting_accuracy": 0.299,
+        "group_accuracy": [
+          [
+            0.984,
+            0.024,
+            0.563
+          ],
+          [
+            0.233,
+            0.994,
+            0.128
+          ],
+          [
+            0.686,
+            0.16,
+            0.984
+          ]
+        ],
+        "independent_accuracy": 0.5284444444444445,
+        "objects": 3000,
+        "training_like_accuracy": 0.9529166666666664,
+        "training_like_minus_conflicting_pp": 65.39166666666665,
+        "training_like_minus_independent_pp": 42.447222222222194,
+        "true_class_probability_range": 0.8557966833987545,
+        "worst_group_accuracy": 0.024
+      },
+      "parameters": 150787,
+      "peak_gpu_memory_bytes": 202231296,
+      "predictions_sha256": "3c0a4d55ba566125ffbb2b4a1e10860e653a8a937ad1da292b8934431c639a53",
+      "protocol": "background-v1",
+      "renderer": "pixel-centres-v1",
+      "runtime_seconds": 140.5711959139444,
+      "schema_version": 1,
+      "seed": 2,
+      "stage": "study",
+      "test_manifest_sha256": "b667ba087bbd8a3716f85e68fa12a8a8c6130b47ff01a9c55632594e9df413a0"
+    },
+    {
+      "architecture": "vit",
+      "checkpoint_sha256": "463058b73d27f8560b36ce8f629a1ebebe1230fb28db9761438095737d93eb34",
+      "code": {
+        "commit": "880540aa9b7d645b5b12f8c413d7c045edea668e",
+        "dirty": false
+      },
+      "condition": "independent",
+      "environment": {
+        "cuda": "13.0",
+        "dependencies": {
+          "Pillow": "12.3.0",
+          "numpy": "2.2.6",
+          "torch": "2.13.0"
+        },
+        "device": "cuda:0",
+        "hardware": "Quadro RTX 5000",
+        "machine": "x86_64",
+        "python": "3.10.20",
+        "system": "Linux"
+      },
+      "experiment_sha256": "2d9eb814556a693f568e4b760e2e4d8d8459d491e90db807aefddb10cc96dc40",
+      "implementation_sha256": "5ff3b28e7b867b3a5b17100f3ae06e6bda9cbde59929c43d7b227c228273600f",
+      "metrics": {
+        "background_flip_rate": 0.04733333333333333,
+        "conflicting_accuracy": 0.9435,
+        "group_accuracy": [
+          [
+            0.986,
+            0.988,
+            0.987
+          ],
+          [
+            0.921,
+            0.927,
+            0.92
+          ],
+          [
+            0.922,
+            0.923,
+            0.92
+          ]
+        ],
+        "independent_accuracy": 0.9437777777777778,
+        "objects": 3000,
+        "training_like_accuracy": 0.9442916666666666,
+        "training_like_minus_conflicting_pp": 0.0791666666666635,
+        "training_like_minus_independent_pp": 0.05138888888888138,
+        "true_class_probability_range": 0.057764920835984716,
+        "worst_group_accuracy": 0.92
+      },
+      "parameters": 150787,
+      "peak_gpu_memory_bytes": 202231296,
+      "predictions_sha256": "c56bc73087d856ad43566979c7e660a9a180e9abe77d9cdb25a4325ee2cec19c",
+      "protocol": "background-v1",
+      "renderer": "pixel-centres-v1",
+      "runtime_seconds": 139.971975945984,
+      "schema_version": 1,
+      "seed": 0,
+      "stage": "study",
+      "test_manifest_sha256": "b667ba087bbd8a3716f85e68fa12a8a8c6130b47ff01a9c55632594e9df413a0"
+    },
+    {
+      "architecture": "vit",
+      "checkpoint_sha256": "9c199d8a05f4321a9835d278c61a5048912f762952abde48699ad6baaa9ce28f",
+      "code": {
+        "commit": "880540aa9b7d645b5b12f8c413d7c045edea668e",
+        "dirty": false
+      },
+      "condition": "independent",
+      "environment": {
+        "cuda": "13.0",
+        "dependencies": {
+          "Pillow": "12.3.0",
+          "numpy": "2.2.6",
+          "torch": "2.13.0"
+        },
+        "device": "cuda:0",
+        "hardware": "Quadro RTX 5000",
+        "machine": "x86_64",
+        "python": "3.10.20",
+        "system": "Linux"
+      },
+      "experiment_sha256": "2d9eb814556a693f568e4b760e2e4d8d8459d491e90db807aefddb10cc96dc40",
+      "implementation_sha256": "5ff3b28e7b867b3a5b17100f3ae06e6bda9cbde59929c43d7b227c228273600f",
+      "metrics": {
+        "background_flip_rate": 0.009333333333333334,
+        "conflicting_accuracy": 0.9943333333333333,
+        "group_accuracy": [
+          [
+            0.999,
+            0.995,
+            0.999
+          ],
+          [
+            0.992,
+            0.984,
+            0.987
+          ],
+          [
+            0.997,
+            0.996,
+            0.995
+          ]
+        ],
+        "independent_accuracy": 0.9937777777777778,
+        "objects": 3000,
+        "training_like_accuracy": 0.99275,
+        "training_like_minus_conflicting_pp": -0.158333333333327,
+        "training_like_minus_independent_pp": -0.10277777777777386,
+        "true_class_probability_range": 0.008991804384393617,
+        "worst_group_accuracy": 0.984
+      },
+      "parameters": 150787,
+      "peak_gpu_memory_bytes": 202231296,
+      "predictions_sha256": "c091fe35ea4d680c6fe4797561291519d1eb5fd2a6471e3386370e134c90ef5b",
+      "protocol": "background-v1",
+      "renderer": "pixel-centres-v1",
+      "runtime_seconds": 137.68415258196183,
+      "schema_version": 1,
+      "seed": 1,
+      "stage": "study",
+      "test_manifest_sha256": "b667ba087bbd8a3716f85e68fa12a8a8c6130b47ff01a9c55632594e9df413a0"
+    },
+    {
+      "architecture": "vit",
+      "checkpoint_sha256": "42a11742ba119b04ea75dfb4ed2fe14df68c02a20c4231d4a856a97e3c4e02aa",
+      "code": {
+        "commit": "880540aa9b7d645b5b12f8c413d7c045edea668e",
+        "dirty": false
+      },
+      "condition": "independent",
+      "environment": {
+        "cuda": "13.0",
+        "dependencies": {
+          "Pillow": "12.3.0",
+          "numpy": "2.2.6",
+          "torch": "2.13.0"
+        },
+        "device": "cuda:0",
+        "hardware": "Quadro RTX 5000",
+        "machine": "x86_64",
+        "python": "3.10.20",
+        "system": "Linux"
+      },
+      "experiment_sha256": "2d9eb814556a693f568e4b760e2e4d8d8459d491e90db807aefddb10cc96dc40",
+      "implementation_sha256": "5ff3b28e7b867b3a5b17100f3ae06e6bda9cbde59929c43d7b227c228273600f",
+      "metrics": {
+        "background_flip_rate": 0.010333333333333333,
+        "conflicting_accuracy": 0.9931666666666666,
+        "group_accuracy": [
+          [
+            0.995,
+            0.997,
+            0.996
+          ],
+          [
+            0.987,
+            0.985,
+            0.987
+          ],
+          [
+            0.996,
+            0.996,
+            0.996
+          ]
+        ],
+        "independent_accuracy": 0.9927777777777778,
+        "objects": 3000,
+        "training_like_accuracy": 0.9920583333333334,
+        "training_like_minus_conflicting_pp": -0.11083333333332668,
+        "training_like_minus_independent_pp": -0.07194444444443837,
+        "true_class_probability_range": 0.011320609335816698,
+        "worst_group_accuracy": 0.985
+      },
+      "parameters": 150787,
+      "peak_gpu_memory_bytes": 202231296,
+      "predictions_sha256": "cf66e6e70a95592b04d63bf2adb97f313d35fd88c63c5ca2f3966757a69a077f",
+      "protocol": "background-v1",
+      "renderer": "pixel-centres-v1",
+      "runtime_seconds": 139.80196705495473,
+      "schema_version": 1,
+      "seed": 2,
+      "stage": "study",
+      "test_manifest_sha256": "b667ba087bbd8a3716f85e68fa12a8a8c6130b47ff01a9c55632594e9df413a0"
+    }
+  ]
+}

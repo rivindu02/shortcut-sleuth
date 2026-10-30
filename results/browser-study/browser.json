@@ -1,0 +1,185 @@
+{
+  "browser": "134.0.6998.35",
+  "capture": {
+    "canonical_background": 0,
+    "intervention_background": 1,
+    "object_id": "demo-73-000000",
+    "seed": 73
+  },
+  "catalog": {
+    "backgrounds": [
+      "coral",
+      "mint",
+      "violet"
+    ],
+    "colour_only_metrics": {
+      "background_flip_rate": 1.0,
+      "conflicting_accuracy": 0.0,
+      "group_accuracy": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "independent_accuracy": 0.3333333333333333,
+      "objects": 3,
+      "training_like_accuracy": 0.9499999999999998,
+      "training_like_minus_conflicting_pp": 94.99999999999999,
+      "training_like_minus_independent_pp": 61.66666666666665,
+      "true_class_probability_range": 1.0,
+      "worst_group_accuracy": 0.0
+    },
+    "mode": "checkpoints",
+    "models": [
+      {
+        "architecture": "cnn",
+        "checkpoint_sha256": "3a59532ec047baea614885be62674c14a2f53e9946a79ab9164ff2e47f6988db",
+        "condition": "correlated",
+        "id": "model-0",
+        "parameters": 152823,
+        "protocol": "background-v1",
+        "seed": 0
+      },
+      {
+        "architecture": "cnn",
+        "checkpoint_sha256": "a1ed605af153dc97db728b812e7a9775c28cc64fb6333d1a5753de6229db51c0",
+        "condition": "correlated",
+        "id": "model-1",
+        "parameters": 152823,
+        "protocol": "background-v1",
+        "seed": 1
+      },
+      {
+        "architecture": "cnn",
+        "checkpoint_sha256": "4677489f9258d29b9b03334a48f33fdf389f3f92a8730d59542ff63e159e46fa",
+        "condition": "correlated",
+        "id": "model-2",
+        "parameters": 152823,
+        "protocol": "background-v1",
+        "seed": 2
+      },
+      {
+        "architecture": "cnn",
+        "checkpoint_sha256": "0741827dededce8cdf03875fa71a5bf75fb0ed08014b162c21f1bd63bf190409",
+        "condition": "independent",
+        "id": "model-3",
+        "parameters": 152823,
+        "protocol": "background-v1",
+        "seed": 0
+      },
+      {
+        "architecture": "cnn",
+        "checkpoint_sha256": "3b0f367d77c95b9afc4853879a703b9d0ae8704ccbe2ede5c3cd127fa64324c7",
+        "condition": "independent",
+        "id": "model-4",
+        "parameters": 152823,
+        "protocol": "background-v1",
+        "seed": 1
+      },
+      {
+        "architecture": "cnn",
+        "checkpoint_sha256": "6f2f15524f92cef6c1d04c755d164e36b5099f65e2ed799de8e13fcf8534043e",
+        "condition": "independent",
+        "id": "model-5",
+        "parameters": 152823,
+        "protocol": "background-v1",
+        "seed": 2
+      },
+      {
+        "architecture": "vit",
+        "checkpoint_sha256": "18720c016eaa5152e13b63433a5e4cc181f74bdda19a71c66c445acfc53b13cb",
+        "condition": "correlated",
+        "id": "model-6",
+        "parameters": 150787,
+        "protocol": "background-v1",
+        "seed": 0
+      },
+      {
+        "architecture": "vit",
+        "checkpoint_sha256": "05792e89a2d8d6b41479d0d03acaf5c3b537fe07897ccb62fc08f6d00963eee0",
+        "condition": "correlated",
+        "id": "model-7",
+        "parameters": 150787,
+        "protocol": "background-v1",
+        "seed": 1
+      },
+      {
+        "architecture": "vit",
+        "checkpoint_sha256": "b57ed67839c6bb9ceab9268535bd64a2856580482afd1f72bcc329efb4aa0e22",
+        "condition": "correlated",
+        "id": "model-8",
+        "parameters": 150787,
+        "protocol": "background-v1",
+        "seed": 2
+      },
+      {
+        "architecture": "vit",
+        "checkpoint_sha256": "463058b73d27f8560b36ce8f629a1ebebe1230fb28db9761438095737d93eb34",
+        "condition": "independent",
+        "id": "model-9",
+        "parameters": 150787,
+        "protocol": "background-v1",
+        "seed": 0
+      },
+      {
+        "architecture": "vit",
+        "checkpoint_sha256": "9c199d8a05f4321a9835d278c61a5048912f762952abde48699ad6baaa9ce28f",
+        "condition": "independent",
+        "id": "model-10",
+        "parameters": 150787,
+        "protocol": "background-v1",
+        "seed": 1
+      },
+      {
+        "architecture": "vit",
+        "checkpoint_sha256": "42a11742ba119b04ea75dfb4ed2fe14df68c02a20c4231d4a856a97e3c4e02aa",
+        "condition": "independent",
+        "id": "model-11",
+        "parameters": 150787,
+        "protocol": "background-v1",
+        "seed": 2
+      }
+    ],
+    "renderer": "pixel-centres-v1",
+    "shapes": [
+      "circle",
+      "square",
+      "triangle"
+    ]
+  },
+  "checkpoint_ids_checked": [
+    "model-0",
+    "model-1",
+    "model-10",
+    "model-11",
+    "model-2",
+    "model-3",
+    "model-4",
+    "model-5",
+    "model-6",
+    "model-7",
+    "model-8",
+    "model-9"
+  ],
+  "checks": [
+    "page_load_and_actual_image",
+    "background_swap_preserves_object",
+    "shape_and_seed_controls",
+    "all_conditions_seeds_and_backgrounds_match_actual_API_probabilities",
+    "desktop_and_mobile_layout"
+  ],
+  "javascript_errors": [],
+  "passed": true,
+  "playwright": "1.51.0"
+}

@@ -2,7 +2,7 @@
 
 Freeze this protocol and record its Git commit before the full experiment. Changes made after examining final test results require a new experiment version and fresh held-out examples.
 
-**Implementation status:** [v1 is frozen](../configs/frozen-v1.json). Data, analytic controls, scratch-model learning, smoke runs and real browser checks are verified. All four 60-epoch development gates passed before the full study. See [RESULTS.md](RESULTS.md). The implementation and recipe below were frozen before any final-study test predictions were examined.
+**Execution status:** [v1 is frozen](../configs/frozen-v1.json), and all 12 primary runs are complete. Data, analytic controls, scratch-model learning, saved predictions and real browser behaviour are verified. All four 60-epoch development gates passed before the full study. See [RESULTS.md](RESULTS.md) and the [per-seed report](../results/background-v1/REPORT.md). The implementation and recipe below were frozen at commit `880540a` before any final-study test predictions were examined.
 
 ## Question and hypothesis
 

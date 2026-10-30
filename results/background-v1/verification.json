@@ -1,0 +1,210 @@
+{
+  "all_training_trees_clean": true,
+  "cpu_label_agreement": true,
+  "cpu_reinference_checks": [
+    {
+      "architecture": "cnn",
+      "condition": "correlated",
+      "max_probability_delta": 1.210719347000122e-07,
+      "predicted_labels_equal": true,
+      "seed": 0
+    },
+    {
+      "architecture": "cnn",
+      "condition": "correlated",
+      "max_probability_delta": 2.891756594181061e-07,
+      "predicted_labels_equal": true,
+      "seed": 1
+    },
+    {
+      "architecture": "cnn",
+      "condition": "correlated",
+      "max_probability_delta": 1.1920928955078125e-06,
+      "predicted_labels_equal": true,
+      "seed": 2
+    },
+    {
+      "architecture": "cnn",
+      "condition": "independent",
+      "max_probability_delta": 1.1920928955078125e-07,
+      "predicted_labels_equal": true,
+      "seed": 0
+    },
+    {
+      "architecture": "cnn",
+      "condition": "independent",
+      "max_probability_delta": 1.1920928955078125e-07,
+      "predicted_labels_equal": true,
+      "seed": 1
+    },
+    {
+      "architecture": "cnn",
+      "condition": "independent",
+      "max_probability_delta": 1.1920928955078125e-07,
+      "predicted_labels_equal": true,
+      "seed": 2
+    },
+    {
+      "architecture": "vit",
+      "condition": "correlated",
+      "max_probability_delta": 0.00020492076873779297,
+      "predicted_labels_equal": true,
+      "seed": 0
+    },
+    {
+      "architecture": "vit",
+      "condition": "correlated",
+      "max_probability_delta": 6.955862045288086e-05,
+      "predicted_labels_equal": true,
+      "seed": 1
+    },
+    {
+      "architecture": "vit",
+      "condition": "correlated",
+      "max_probability_delta": 0.00033080577850341797,
+      "predicted_labels_equal": true,
+      "seed": 2
+    },
+    {
+      "architecture": "vit",
+      "condition": "independent",
+      "max_probability_delta": 0.000691831111907959,
+      "predicted_labels_equal": true,
+      "seed": 0
+    },
+    {
+      "architecture": "vit",
+      "condition": "independent",
+      "max_probability_delta": 7.152557373046875e-07,
+      "predicted_labels_equal": true,
+      "seed": 1
+    },
+    {
+      "architecture": "vit",
+      "condition": "independent",
+      "max_probability_delta": 1.1920928955078125e-06,
+      "predicted_labels_equal": true,
+      "seed": 2
+    }
+  ],
+  "frozen_config_sha256": "2d9eb814556a693f568e4b760e2e4d8d8459d491e90db807aefddb10cc96dc40",
+  "implementation_sha256": "5ff3b28e7b867b3a5b17100f3ae06e6bda9cbde59929c43d7b227c228273600f",
+  "inference_check_object_ids": [
+    "test-2026-000000",
+    "test-2026-000001",
+    "test-2026-000002",
+    "test-2026-000057",
+    "test-2026-000058",
+    "test-2026-000059",
+    "test-2026-002997",
+    "test-2026-002998",
+    "test-2026-002999"
+  ],
+  "objects_per_run": 3000,
+  "paired_renders_per_object": 3,
+  "passed": true,
+  "prediction_vectors_verified": 108000,
+  "probabilities_are_bitwise_identical": false,
+  "reinference_note": "CPU inference may use different device/batch kernels; primary metrics use the saved evaluation predictions",
+  "runs": [
+    {
+      "architecture": "cnn",
+      "checkpoint_sha256": "3a59532ec047baea614885be62674c14a2f53e9946a79ab9164ff2e47f6988db",
+      "condition": "correlated",
+      "final_validation_accuracy": 1.0,
+      "predictions_sha256": "7a24eb676587aa6c03ce9f044898b205bf27d7eccca6d8fc6f89d5a09746ca79",
+      "seed": 0
+    },
+    {
+      "architecture": "cnn",
+      "checkpoint_sha256": "a1ed605af153dc97db728b812e7a9775c28cc64fb6333d1a5753de6229db51c0",
+      "condition": "correlated",
+      "final_validation_accuracy": 1.0,
+      "predictions_sha256": "8dfbe3a5bffc78d3a90e0403467ea34b04343482f8476110e2f82980cbe9a3a9",
+      "seed": 1
+    },
+    {
+      "architecture": "cnn",
+      "checkpoint_sha256": "4677489f9258d29b9b03334a48f33fdf389f3f92a8730d59542ff63e159e46fa",
+      "condition": "correlated",
+      "final_validation_accuracy": 1.0,
+      "predictions_sha256": "87f9f2696ff9507bf0ba88a0b69ca46a0987daa04ea6dbb33a1b285507dcbfab",
+      "seed": 2
+    },
+    {
+      "architecture": "cnn",
+      "checkpoint_sha256": "0741827dededce8cdf03875fa71a5bf75fb0ed08014b162c21f1bd63bf190409",
+      "condition": "independent",
+      "final_validation_accuracy": 1.0,
+      "predictions_sha256": "32e0d56ddbdd8424a27395ee81ab44c35ce934fdb75179dc8dffdc8eb2aa4c18",
+      "seed": 0
+    },
+    {
+      "architecture": "cnn",
+      "checkpoint_sha256": "3b0f367d77c95b9afc4853879a703b9d0ae8704ccbe2ede5c3cd127fa64324c7",
+      "condition": "independent",
+      "final_validation_accuracy": 1.0,
+      "predictions_sha256": "732407ad02704e299cada6c9749733d0a5adc0c455f9f3a6fa7c64d96b182ad2",
+      "seed": 1
+    },
+    {
+      "architecture": "cnn",
+      "checkpoint_sha256": "6f2f15524f92cef6c1d04c755d164e36b5099f65e2ed799de8e13fcf8534043e",
+      "condition": "independent",
+      "final_validation_accuracy": 1.0,
+      "predictions_sha256": "ad13b58b3d74de40d8ecabe5feeea99d66dfc51db239e729a79994ac8115eb90",
+      "seed": 2
+    },
+    {
+      "architecture": "vit",
+      "checkpoint_sha256": "18720c016eaa5152e13b63433a5e4cc181f74bdda19a71c66c445acfc53b13cb",
+      "condition": "correlated",
+      "final_validation_accuracy": 0.955,
+      "predictions_sha256": "6803fdf8584411d72f4c0a24477f67dbdec4cab60e393459657aff096cb210a5",
+      "seed": 0
+    },
+    {
+      "architecture": "vit",
+      "checkpoint_sha256": "05792e89a2d8d6b41479d0d03acaf5c3b537fe07897ccb62fc08f6d00963eee0",
+      "condition": "correlated",
+      "final_validation_accuracy": 0.9555555555555556,
+      "predictions_sha256": "b58b0e17a60c56809547e871a6df5af0a00fe501b0aab1653c4631ace01a0854",
+      "seed": 1
+    },
+    {
+      "architecture": "vit",
+      "checkpoint_sha256": "b57ed67839c6bb9ceab9268535bd64a2856580482afd1f72bcc329efb4aa0e22",
+      "condition": "correlated",
+      "final_validation_accuracy": 0.9583333333333334,
+      "predictions_sha256": "3c0a4d55ba566125ffbb2b4a1e10860e653a8a937ad1da292b8934431c639a53",
+      "seed": 2
+    },
+    {
+      "architecture": "vit",
+      "checkpoint_sha256": "463058b73d27f8560b36ce8f629a1ebebe1230fb28db9761438095737d93eb34",
+      "condition": "independent",
+      "final_validation_accuracy": 0.94,
+      "predictions_sha256": "c56bc73087d856ad43566979c7e660a9a180e9abe77d9cdb25a4325ee2cec19c",
+      "seed": 0
+    },
+    {
+      "architecture": "vit",
+      "checkpoint_sha256": "9c199d8a05f4321a9835d278c61a5048912f762952abde48699ad6baaa9ce28f",
+      "condition": "independent",
+      "final_validation_accuracy": 0.9922222222222222,
+      "predictions_sha256": "c091fe35ea4d680c6fe4797561291519d1eb5fd2a6471e3386370e134c90ef5b",
+      "seed": 1
+    },
+    {
+      "architecture": "vit",
+      "checkpoint_sha256": "42a11742ba119b04ea75dfb4ed2fe14df68c02a20c4231d4a856a97e3c4e02aa",
+      "condition": "independent",
+      "final_validation_accuracy": 0.9933333333333333,
+      "predictions_sha256": "cf66e6e70a95592b04d63bf2adb97f313d35fd88c63c5ca2f3966757a69a077f",
+      "seed": 2
+    }
+  ],
+  "runs_verified": 12,
+  "test_manifest_sha256": "b667ba087bbd8a3716f85e68fa12a8a8c6130b47ff01a9c55632594e9df413a0",
+  "training_commit": "880540aa9b7d645b5b12f8c413d7c045edea668e"
+}

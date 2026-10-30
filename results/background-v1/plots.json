@@ -1,0 +1,19 @@
+{
+  "error_bars": "sample standard deviation across training seeds; not a confidence interval",
+  "files": [
+    "overview.svg",
+    "overview.png",
+    "groups.svg",
+    "groups.png"
+  ],
+  "full_matrix_complete": true,
+  "matplotlib": "3.10.9",
+  "metrics_sha256": "5b44428a89d894b74c75c0116b54b7e0bb45357b16b35cad439fab6bf4403fe1",
+  "protocol": "background-v1",
+  "training_seed_counts": {
+    "cnn/correlated": 3,
+    "cnn/independent": 3,
+    "vit/correlated": 3,
+    "vit/independent": 3
+  }
+}

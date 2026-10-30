@@ -4,11 +4,11 @@
 
 A controlled CNN vs. Vision Transformer experiment with an interactive background-swap lab. Train both models from scratch, keep each foreground pixel fixed, and measure what happens when the background shortcut changes.
 
-**Status:** the smoke matrix, both scratch models, checkpoint inference, all automated checks and real desktop/mobile browser behaviour have been verified. All four development learning gates passed, and [study v1 is frozen](configs/frozen-v1.json). **The final 12-run study is pending execution.** Earlier failures and revisions are preserved in the [verification report](docs/RESULTS.md).
+**Status:** the complete 12-run study is trained, evaluated and verified. The interactive lab has been checked with all 12 checkpoints on desktop and mobile. [Frozen configuration](configs/frozen-v1.json) · [Measured results](results/background-v1/REPORT.md) · [Verification and limitations](docs/RESULTS.md).
 
-<p align="center"><img src="results/browser-smoke/lab-desktop.png" width="1100" alt="Actual background-swap lab with CNN and ViT probabilities from four trained smoke checkpoints"></p>
+<p align="center"><img src="results/browser-study/lab-intervention.png" width="1100" alt="Actual trained-model lab: a circle on a conflicting mint background is classified as circle by the CNN and square by the ViT"></p>
 
-*Actual browser capture using four smoke checkpoints. Two-epoch smoke results demonstrate the pipeline; they are not the primary architecture comparison. [Mobile capture](results/browser-smoke/lab-mobile.png) · [Paired renderer examples](results/paired-examples.png).*
+*Actual seed-0 correlated checkpoints, object `demo-73-000000`, with only its background changed. [Canonical-background capture](results/browser-study/lab-desktop.png) · [Mobile capture](results/browser-study/lab-mobile.png) · [Paired renderer examples](results/paired-examples.png).*
 
 ## Features
 
@@ -19,7 +19,24 @@ A controlled CNN vs. Vision Transformer experiment with an interactive backgroun
 - Per-object predictions, per-seed reports, runtime, environment and checkpoint provenance.
 - Local background lab with checkpoint selection, probabilities and paired sensitivity.
 
-No architecture is assumed to win. Smoke results are development checks; only the frozen three-seed study supports the primary comparison.
+The primary comparison uses the frozen three-seed study. Development failures and inconclusive checks are retained alongside successful runs.
+
+## Measured results
+
+Each run evaluates the same 3,000 held-out objects on all three backgrounds. Values are mean ± sample standard deviation across training seeds 0, 1 and 2.
+
+| Model | Training backgrounds | Conflicting-background accuracy | Background flip rate |
+| --- | --- | --- | --- |
+| CNN | Correlated | 99.83% ± 0.19 | 0.32% ± 0.36 |
+| CNN | Independent | 100.00% ± 0.00 | 0.00% ± 0.00 |
+| ViT | Correlated | 24.32% ± 5.23 | 96.43% ± 3.44 |
+| ViT | Independent | 97.70% ± 2.90 | 2.23% ± 2.17 |
+
+The correlated ViT was strongly sensitive to background changes. Independent-background training reduced that sensitivity. The correlated CNN retained almost all of its accuracy, so the anticipated shortcut collapse did not occur for that model. These findings describe this synthetic task and shared recipe; they do not establish a universal architecture ranking.
+
+![Measured accuracy and background sensitivity with seed standard deviations](results/background-v1/overview.svg)
+
+[All per-seed metrics and resource measurements](results/background-v1/REPORT.md) · [Nine-group accuracy figure](results/background-v1/groups.svg) · [Training curves](results/background-v1/training-curves.json) · [Prediction and provenance verification](results/background-v1/verification.json).
 
 ## Install
 
@@ -100,6 +117,16 @@ python -m shortcut_sleuth audit --data artifacts/full-data --output artifacts/fu
 python -m shortcut_sleuth matrix --config configs/frozen-v1.json \
   --data artifacts/full-data --runs artifacts/full-runs --evaluate
 python -m shortcut_sleuth report --runs artifacts/full-runs --output artifacts/full-report
+python scripts/verify_study.py --config configs/frozen-v1.json \
+  --data artifacts/full-data --runs artifacts/full-runs --report artifacts/full-report \
+  --output artifacts/full-report/verification.json
+```
+
+To regenerate the standalone figures:
+
+```bash
+python -m pip install -e '.[plots]'
+python scripts/plot_results.py --metrics artifacts/full-report/metrics.json --output artifacts/full-report
 ```
 
 The freeze records passed learning gates on separate development objects: both architectures and controls reached at least 80% final validation accuracy. To reproduce the development checks and freeze procedure without replacing the published configuration:
@@ -131,7 +158,7 @@ shortcut_sleuth/
   metrics.py          weighted distributions, groups and seed summaries
   report.py           Markdown/JSON reports and SVG charts
   server.py + web/    local interactive background lab
-configs/              smoke, development and candidate full recipes
+configs/              smoke, development, candidate and committed frozen recipes
 tests/                data, metrics, models, HTTP and interface checks
 results/              small verified evidence; no checkpoints or raw manifests
 ```
