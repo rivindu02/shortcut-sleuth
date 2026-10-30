@@ -24,7 +24,7 @@ jobs:
         run: |
           python -m venv .venv
           .venv/bin/python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
-          .venv/bin/python -m pip install -e . build
+          .venv/bin/python -m pip install -e '.[browser]' build
       - name: Python and JavaScript checks (all required)
         run: .venv/bin/python scripts/verify.py --require-all --output artifacts/verification.json
       - name: Build distribution with bundled demo assets
@@ -35,6 +35,11 @@ jobs:
         run: |
           .venv/bin/python -m shortcut_sleuth smoke --output artifacts/smoke
           .venv/bin/python -m shortcut_sleuth audit --data artifacts/smoke/data --output artifacts/smoke-audit.json
+      - name: Check real desktop and mobile browser behaviour
+        run: |
+          .venv/bin/python -m playwright install --with-deps chromium
+          .venv/bin/python scripts/browser_check.py --output artifacts/browser-control
+          .venv/bin/python scripts/browser_check.py --runs artifacts/smoke/runs --output artifacts/browser-smoke
       - name: Retain validation evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -49,4 +54,6 @@ jobs:
             artifacts/smoke/runs/*/metadata.json
             artifacts/smoke/runs/*/evaluation.json
             artifacts/smoke/runs/*/predictions.jsonl
+            artifacts/browser-control/
+            artifacts/browser-smoke/
           if-no-files-found: warn

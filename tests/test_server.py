@@ -21,7 +21,7 @@ class ServerTests(unittest.TestCase):
     def setUpClass(cls):
         cls.handler = make_handler(Demo())
 
-    def request(self, route):
+    def request(self, route, disconnect=False):
         class Connection:
             def __init__(self):
                 self.body = bytearray()
@@ -30,10 +30,14 @@ class ServerTests(unittest.TestCase):
                 return io.BytesIO(f"GET {route} HTTP/1.0\r\nHost: localhost\r\n\r\n".encode())
 
             def sendall(self, data):
+                if disconnect:
+                    raise BrokenPipeError("Client disconnected")
                 self.body.extend(data)
 
         connection = Connection()
         self.handler(connection, ("127.0.0.1", 0), SimpleNamespace())
+        if disconnect:
+            return
         head, body = bytes(connection.body).split(b"\r\n\r\n", 1)
         lines = head.decode().split("\r\n")
         return int(lines[0].split()[1]), dict(line.split(": ", 1) for line in lines[1:]), body
@@ -78,6 +82,9 @@ class ServerTests(unittest.TestCase):
         with ThreadPoolExecutor(max_workers=4) as pool:
             examples = list(pool.map(lambda seed: self.get(f"/api/example?seed={seed}"), range(8)))
         self.assertEqual(len({item["foreground_hash"] for item in examples}), 8)
+
+    def test_disconnected_client(self):
+        self.request("/api/catalog", disconnect=True)
 
     def test_socket_http_roundtrip(self):
         try:

@@ -1,0 +1,56 @@
+{
+  "browser": "134.0.6998.35",
+  "catalog": {
+    "backgrounds": [
+      "coral",
+      "mint",
+      "violet"
+    ],
+    "colour_only_metrics": {
+      "background_flip_rate": 1.0,
+      "conflicting_accuracy": 0.0,
+      "group_accuracy": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "independent_accuracy": 0.3333333333333333,
+      "objects": 3,
+      "training_like_accuracy": 0.9499999999999998,
+      "training_like_minus_conflicting_pp": 94.99999999999999,
+      "training_like_minus_independent_pp": 61.66666666666665,
+      "true_class_probability_range": 1.0,
+      "worst_group_accuracy": 0.0
+    },
+    "mode": "colour-rule-only",
+    "models": [],
+    "renderer": "pixel-centres-v1",
+    "shapes": [
+      "circle",
+      "square",
+      "triangle"
+    ]
+  },
+  "checks": [
+    "page_load_and_actual_image",
+    "background_swap_preserves_object",
+    "shape_and_seed_controls",
+    "checkpoint_free_empty_state",
+    "desktop_and_mobile_layout"
+  ],
+  "javascript_errors": [],
+  "passed": true,
+  "playwright": "1.51.0"
+}

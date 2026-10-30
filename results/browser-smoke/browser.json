@@ -1,0 +1,93 @@
+{
+  "browser": "134.0.6998.35",
+  "catalog": {
+    "backgrounds": [
+      "coral",
+      "mint",
+      "violet"
+    ],
+    "colour_only_metrics": {
+      "background_flip_rate": 1.0,
+      "conflicting_accuracy": 0.0,
+      "group_accuracy": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "independent_accuracy": 0.3333333333333333,
+      "objects": 3,
+      "training_like_accuracy": 0.9499999999999998,
+      "training_like_minus_conflicting_pp": 94.99999999999999,
+      "training_like_minus_independent_pp": 61.66666666666665,
+      "true_class_probability_range": 1.0,
+      "worst_group_accuracy": 0.0
+    },
+    "mode": "checkpoints",
+    "models": [
+      {
+        "architecture": "cnn",
+        "checkpoint_sha256": "38f0963aae4ff08f3f3cb6a8ebad7f2a221a9f6b51f908cab178be743f3a2362",
+        "condition": "correlated",
+        "id": "model-0",
+        "parameters": 152823,
+        "protocol": "background-v1-smoke",
+        "seed": 0
+      },
+      {
+        "architecture": "cnn",
+        "checkpoint_sha256": "62b61912fdc73fc4886a14bedeb518a3cf1da87d715e81a5e26663505f4d9558",
+        "condition": "independent",
+        "id": "model-1",
+        "parameters": 152823,
+        "protocol": "background-v1-smoke",
+        "seed": 0
+      },
+      {
+        "architecture": "vit",
+        "checkpoint_sha256": "545011567b25e6b294061b5f6e25534e6826af38df5947ee8a5cdcff1b50b445",
+        "condition": "correlated",
+        "id": "model-2",
+        "parameters": 150787,
+        "protocol": "background-v1-smoke",
+        "seed": 0
+      },
+      {
+        "architecture": "vit",
+        "checkpoint_sha256": "fc0b8a66d5bed7dba4cfb978ae7e3a6035fef9c89c1b89a8d44adb886de8ede2",
+        "condition": "independent",
+        "id": "model-3",
+        "parameters": 150787,
+        "protocol": "background-v1-smoke",
+        "seed": 0
+      }
+    ],
+    "renderer": "pixel-centres-v1",
+    "shapes": [
+      "circle",
+      "square",
+      "triangle"
+    ]
+  },
+  "checks": [
+    "page_load_and_actual_image",
+    "background_swap_preserves_object",
+    "shape_and_seed_controls",
+    "both_conditions_match_actual_API_probabilities",
+    "desktop_and_mobile_layout"
+  ],
+  "javascript_errors": [],
+  "passed": true,
+  "playwright": "1.51.0"
+}

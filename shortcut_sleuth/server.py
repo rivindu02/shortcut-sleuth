@@ -97,6 +97,9 @@ def make_handler(demo):
                 return self.send(404, {"error": "Not found"})
             except (ValueError, OverflowError):
                 return self.send(400, {"error": "Invalid shape or seed"})
+            except (BrokenPipeError, ConnectionResetError):
+                # A browser may navigate away while a prediction is running.
+                return
             except Exception:
                 return self.send(500, {"error": "Prediction failed; inspect the checkpoint and server environment"})
 

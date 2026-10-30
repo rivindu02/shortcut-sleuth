@@ -1,0 +1,142 @@
+{
+  "cross_split_duplicate_foregrounds": 0,
+  "foreground_swap_comparisons": 1620,
+  "passed": true,
+  "protocol": "background-v1-smoke",
+  "renderer": "pixel-centres-v1",
+  "seed": 73,
+  "splits": {
+    "test-paired": {
+      "contingency": [
+        [
+          30,
+          30,
+          30
+        ],
+        [
+          30,
+          30,
+          30
+        ],
+        [
+          30,
+          30,
+          30
+        ]
+      ],
+      "count": 90,
+      "sha256": "780f49e2b4a24ab12d0b9fe3cce06758649bb44458f9c030c86b64b24d5e2f84"
+    },
+    "train-correlated": {
+      "contingency": [
+        [
+          114,
+          3,
+          3
+        ],
+        [
+          3,
+          114,
+          3
+        ],
+        [
+          3,
+          3,
+          114
+        ]
+      ],
+      "count": 360,
+      "sha256": "d29c806ecef2878aa5dea7c27cf75b937fec646b410e696570a9a6b659d19f73"
+    },
+    "train-independent": {
+      "contingency": [
+        [
+          40,
+          40,
+          40
+        ],
+        [
+          40,
+          40,
+          40
+        ],
+        [
+          40,
+          40,
+          40
+        ]
+      ],
+      "count": 360,
+      "sha256": "2764a21750dc380c5373a943d248414ea52effc92b1924b875ad2c298046d5cc"
+    },
+    "validation-correlated": {
+      "contingency": [
+        [
+          114,
+          3,
+          3
+        ],
+        [
+          3,
+          114,
+          3
+        ],
+        [
+          3,
+          3,
+          114
+        ]
+      ],
+      "count": 360,
+      "sha256": "b91e2de06c8fc953fac319fc97628bbbb74144a5796c282192e862efa9891671"
+    },
+    "validation-independent": {
+      "contingency": [
+        [
+          40,
+          40,
+          40
+        ],
+        [
+          40,
+          40,
+          40
+        ],
+        [
+          40,
+          40,
+          40
+        ]
+      ],
+      "count": 360,
+      "sha256": "667c606f1aff5c796dbeb0f282f97d505be29c2814cba434335af9d8f219ecec"
+    }
+  },
+  "training_foreground_area": {
+    "circle": {
+      "mean_pixels": 374.25,
+      "quantiles_05_50_95": [
+        269.95,
+        367.5,
+        470.2
+      ]
+    },
+    "square": {
+      "mean_pixels": 374.2,
+      "quantiles_05_50_95": [
+        269.85,
+        368.5,
+        472.0
+      ]
+    },
+    "triangle": {
+      "mean_pixels": 373.925,
+      "quantiles_05_50_95": [
+        268.8,
+        368.0,
+        473.05
+      ]
+    }
+  },
+  "unique_foregrounds": 810
+}

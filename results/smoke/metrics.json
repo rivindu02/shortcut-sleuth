@@ -1,0 +1,616 @@
+{
+  "full_matrix_complete": false,
+  "groups": {
+    "cnn/correlated": {
+      "metrics": {
+        "background_flip_rate": {
+          "mean": 1.0,
+          "sample_std": null
+        },
+        "conflicting_accuracy": {
+          "mean": 0.0,
+          "sample_std": null
+        },
+        "group_accuracy": {
+          "mean": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "sample_std": null
+        },
+        "independent_accuracy": {
+          "mean": 0.3333333333333333,
+          "sample_std": null
+        },
+        "training_like_accuracy": {
+          "mean": 0.95,
+          "sample_std": null
+        },
+        "training_like_minus_conflicting_pp": {
+          "mean": 95.0,
+          "sample_std": null
+        },
+        "training_like_minus_independent_pp": {
+          "mean": 61.66666666666667,
+          "sample_std": null
+        },
+        "true_class_probability_range": {
+          "mean": 0.9356766847272714,
+          "sample_std": null
+        },
+        "worst_group_accuracy": {
+          "mean": 0.0,
+          "sample_std": null
+        }
+      },
+      "per_seed": [
+        {
+          "background_flip_rate": 1.0,
+          "conflicting_accuracy": 0.0,
+          "group_accuracy": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "independent_accuracy": 0.3333333333333333,
+          "objects": 90,
+          "training_like_accuracy": 0.95,
+          "training_like_minus_conflicting_pp": 95.0,
+          "training_like_minus_independent_pp": 61.66666666666667,
+          "true_class_probability_range": 0.9356766847272714,
+          "worst_group_accuracy": 0.0
+        }
+      ],
+      "seed_count": 1,
+      "seeds": [
+        0
+      ]
+    },
+    "cnn/independent": {
+      "metrics": {
+        "background_flip_rate": {
+          "mean": 0.1111111111111111,
+          "sample_std": null
+        },
+        "conflicting_accuracy": {
+          "mean": 0.37222222222222223,
+          "sample_std": null
+        },
+        "group_accuracy": {
+          "mean": [
+            [
+              0.0,
+              0.0,
+              0.23333333333333334
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "sample_std": null
+        },
+        "independent_accuracy": {
+          "mean": 0.3592592592592593,
+          "sample_std": null
+        },
+        "training_like_accuracy": {
+          "mean": 0.33527777777777773,
+          "sample_std": null
+        },
+        "training_like_minus_conflicting_pp": {
+          "mean": -3.69444444444445,
+          "sample_std": null
+        },
+        "training_like_minus_independent_pp": {
+          "mean": -2.398148148148155,
+          "sample_std": null
+        },
+        "true_class_probability_range": {
+          "mean": 0.03453192975785997,
+          "sample_std": null
+        },
+        "worst_group_accuracy": {
+          "mean": 0.0,
+          "sample_std": null
+        }
+      },
+      "per_seed": [
+        {
+          "background_flip_rate": 0.1111111111111111,
+          "conflicting_accuracy": 0.37222222222222223,
+          "group_accuracy": [
+            [
+              0.0,
+              0.0,
+              0.23333333333333334
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "independent_accuracy": 0.3592592592592593,
+          "objects": 90,
+          "training_like_accuracy": 0.33527777777777773,
+          "training_like_minus_conflicting_pp": -3.69444444444445,
+          "training_like_minus_independent_pp": -2.398148148148155,
+          "true_class_probability_range": 0.03453192975785997,
+          "worst_group_accuracy": 0.0
+        }
+      ],
+      "seed_count": 1,
+      "seeds": [
+        0
+      ]
+    },
+    "vit/correlated": {
+      "metrics": {
+        "background_flip_rate": {
+          "mean": 1.0,
+          "sample_std": null
+        },
+        "conflicting_accuracy": {
+          "mean": 0.0,
+          "sample_std": null
+        },
+        "group_accuracy": {
+          "mean": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "sample_std": null
+        },
+        "independent_accuracy": {
+          "mean": 0.3333333333333333,
+          "sample_std": null
+        },
+        "training_like_accuracy": {
+          "mean": 0.95,
+          "sample_std": null
+        },
+        "training_like_minus_conflicting_pp": {
+          "mean": 95.0,
+          "sample_std": null
+        },
+        "training_like_minus_independent_pp": {
+          "mean": 61.66666666666667,
+          "sample_std": null
+        },
+        "true_class_probability_range": {
+          "mean": 0.857488684852918,
+          "sample_std": null
+        },
+        "worst_group_accuracy": {
+          "mean": 0.0,
+          "sample_std": null
+        }
+      },
+      "per_seed": [
+        {
+          "background_flip_rate": 1.0,
+          "conflicting_accuracy": 0.0,
+          "group_accuracy": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "independent_accuracy": 0.3333333333333333,
+          "objects": 90,
+          "training_like_accuracy": 0.95,
+          "training_like_minus_conflicting_pp": 95.0,
+          "training_like_minus_independent_pp": 61.66666666666667,
+          "true_class_probability_range": 0.857488684852918,
+          "worst_group_accuracy": 0.0
+        }
+      ],
+      "seed_count": 1,
+      "seeds": [
+        0
+      ]
+    },
+    "vit/independent": {
+      "metrics": {
+        "background_flip_rate": {
+          "mean": 1.0,
+          "sample_std": null
+        },
+        "conflicting_accuracy": {
+          "mean": 0.5,
+          "sample_std": null
+        },
+        "group_accuracy": {
+          "mean": [
+            [
+              0.0,
+              1.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "sample_std": null
+        },
+        "independent_accuracy": {
+          "mean": 0.3333333333333333,
+          "sample_std": null
+        },
+        "training_like_accuracy": {
+          "mean": 0.025,
+          "sample_std": null
+        },
+        "training_like_minus_conflicting_pp": {
+          "mean": -47.5,
+          "sample_std": null
+        },
+        "training_like_minus_independent_pp": {
+          "mean": -30.83333333333333,
+          "sample_std": null
+        },
+        "true_class_probability_range": {
+          "mean": 0.030685700310601128,
+          "sample_std": null
+        },
+        "worst_group_accuracy": {
+          "mean": 0.0,
+          "sample_std": null
+        }
+      },
+      "per_seed": [
+        {
+          "background_flip_rate": 1.0,
+          "conflicting_accuracy": 0.5,
+          "group_accuracy": [
+            [
+              0.0,
+              1.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "independent_accuracy": 0.3333333333333333,
+          "objects": 90,
+          "training_like_accuracy": 0.025,
+          "training_like_minus_conflicting_pp": -47.5,
+          "training_like_minus_independent_pp": -30.83333333333333,
+          "true_class_probability_range": 0.030685700310601128,
+          "worst_group_accuracy": 0.0
+        }
+      ],
+      "seed_count": 1,
+      "seeds": [
+        0
+      ]
+    }
+  },
+  "protocol": "background-v1-smoke",
+  "runs": [
+    {
+      "architecture": "cnn",
+      "checkpoint_sha256": "38f0963aae4ff08f3f3cb6a8ebad7f2a221a9f6b51f908cab178be743f3a2362",
+      "code": {
+        "commit": "75e3d95f1d96953402506cb1c80b9f61a7063d58",
+        "dirty": true
+      },
+      "condition": "correlated",
+      "environment": {
+        "cuda": "13.0",
+        "dependencies": {
+          "Pillow": "12.3.0",
+          "numpy": "2.2.6",
+          "torch": "2.13.0"
+        },
+        "device": "cpu",
+        "hardware": "x86_64",
+        "machine": "x86_64",
+        "python": "3.10.20",
+        "system": "Linux"
+      },
+      "experiment_sha256": "5b83194dc46eb050bef0615d3aecc448903c644addb5a40819e6e92b3aa62515",
+      "implementation_sha256": "7f1d728aed730dd510bf4648316f0b86ef1237c88557a94cbedc9f07bc03617a",
+      "metrics": {
+        "background_flip_rate": 1.0,
+        "conflicting_accuracy": 0.0,
+        "group_accuracy": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "independent_accuracy": 0.3333333333333333,
+        "objects": 90,
+        "training_like_accuracy": 0.95,
+        "training_like_minus_conflicting_pp": 95.0,
+        "training_like_minus_independent_pp": 61.66666666666667,
+        "true_class_probability_range": 0.9356766847272714,
+        "worst_group_accuracy": 0.0
+      },
+      "parameters": 152823,
+      "peak_gpu_memory_bytes": null,
+      "predictions_sha256": "893151ffd7b823672b5b58f5f52589c5549fa2a382f0cf858344bb9df1211ae5",
+      "protocol": "background-v1-smoke",
+      "renderer": "pixel-centres-v1",
+      "runtime_seconds": 4.7324114959919825,
+      "schema_version": 1,
+      "seed": 0,
+      "stage": "smoke",
+      "test_manifest_sha256": "780f49e2b4a24ab12d0b9fe3cce06758649bb44458f9c030c86b64b24d5e2f84"
+    },
+    {
+      "architecture": "cnn",
+      "checkpoint_sha256": "62b61912fdc73fc4886a14bedeb518a3cf1da87d715e81a5e26663505f4d9558",
+      "code": {
+        "commit": "75e3d95f1d96953402506cb1c80b9f61a7063d58",
+        "dirty": true
+      },
+      "condition": "independent",
+      "environment": {
+        "cuda": "13.0",
+        "dependencies": {
+          "Pillow": "12.3.0",
+          "numpy": "2.2.6",
+          "torch": "2.13.0"
+        },
+        "device": "cpu",
+        "hardware": "x86_64",
+        "machine": "x86_64",
+        "python": "3.10.20",
+        "system": "Linux"
+      },
+      "experiment_sha256": "5b83194dc46eb050bef0615d3aecc448903c644addb5a40819e6e92b3aa62515",
+      "implementation_sha256": "7f1d728aed730dd510bf4648316f0b86ef1237c88557a94cbedc9f07bc03617a",
+      "metrics": {
+        "background_flip_rate": 0.1111111111111111,
+        "conflicting_accuracy": 0.37222222222222223,
+        "group_accuracy": [
+          [
+            0.0,
+            0.0,
+            0.23333333333333334
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            1.0,
+            1.0
+          ]
+        ],
+        "independent_accuracy": 0.3592592592592593,
+        "objects": 90,
+        "training_like_accuracy": 0.33527777777777773,
+        "training_like_minus_conflicting_pp": -3.69444444444445,
+        "training_like_minus_independent_pp": -2.398148148148155,
+        "true_class_probability_range": 0.03453192975785997,
+        "worst_group_accuracy": 0.0
+      },
+      "parameters": 152823,
+      "peak_gpu_memory_bytes": null,
+      "predictions_sha256": "7fd7bfd7d123b20e8475b364255782077ef1e57eaeb22191ceebd8610aa82cdb",
+      "protocol": "background-v1-smoke",
+      "renderer": "pixel-centres-v1",
+      "runtime_seconds": 4.573738600010984,
+      "schema_version": 1,
+      "seed": 0,
+      "stage": "smoke",
+      "test_manifest_sha256": "780f49e2b4a24ab12d0b9fe3cce06758649bb44458f9c030c86b64b24d5e2f84"
+    },
+    {
+      "architecture": "vit",
+      "checkpoint_sha256": "545011567b25e6b294061b5f6e25534e6826af38df5947ee8a5cdcff1b50b445",
+      "code": {
+        "commit": "75e3d95f1d96953402506cb1c80b9f61a7063d58",
+        "dirty": true
+      },
+      "condition": "correlated",
+      "environment": {
+        "cuda": "13.0",
+        "dependencies": {
+          "Pillow": "12.3.0",
+          "numpy": "2.2.6",
+          "torch": "2.13.0"
+        },
+        "device": "cpu",
+        "hardware": "x86_64",
+        "machine": "x86_64",
+        "python": "3.10.20",
+        "system": "Linux"
+      },
+      "experiment_sha256": "5b83194dc46eb050bef0615d3aecc448903c644addb5a40819e6e92b3aa62515",
+      "implementation_sha256": "7f1d728aed730dd510bf4648316f0b86ef1237c88557a94cbedc9f07bc03617a",
+      "metrics": {
+        "background_flip_rate": 1.0,
+        "conflicting_accuracy": 0.0,
+        "group_accuracy": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "independent_accuracy": 0.3333333333333333,
+        "objects": 90,
+        "training_like_accuracy": 0.95,
+        "training_like_minus_conflicting_pp": 95.0,
+        "training_like_minus_independent_pp": 61.66666666666667,
+        "true_class_probability_range": 0.857488684852918,
+        "worst_group_accuracy": 0.0
+      },
+      "parameters": 150787,
+      "peak_gpu_memory_bytes": null,
+      "predictions_sha256": "1543644962c6880f938b143362478d7881423a41ac60b997c3ce8a3dd6cd15f0",
+      "protocol": "background-v1-smoke",
+      "renderer": "pixel-centres-v1",
+      "runtime_seconds": 2.694182801991701,
+      "schema_version": 1,
+      "seed": 0,
+      "stage": "smoke",
+      "test_manifest_sha256": "780f49e2b4a24ab12d0b9fe3cce06758649bb44458f9c030c86b64b24d5e2f84"
+    },
+    {
+      "architecture": "vit",
+      "checkpoint_sha256": "fc0b8a66d5bed7dba4cfb978ae7e3a6035fef9c89c1b89a8d44adb886de8ede2",
+      "code": {
+        "commit": "75e3d95f1d96953402506cb1c80b9f61a7063d58",
+        "dirty": true
+      },
+      "condition": "independent",
+      "environment": {
+        "cuda": "13.0",
+        "dependencies": {
+          "Pillow": "12.3.0",
+          "numpy": "2.2.6",
+          "torch": "2.13.0"
+        },
+        "device": "cpu",
+        "hardware": "x86_64",
+        "machine": "x86_64",
+        "python": "3.10.20",
+        "system": "Linux"
+      },
+      "experiment_sha256": "5b83194dc46eb050bef0615d3aecc448903c644addb5a40819e6e92b3aa62515",
+      "implementation_sha256": "7f1d728aed730dd510bf4648316f0b86ef1237c88557a94cbedc9f07bc03617a",
+      "metrics": {
+        "background_flip_rate": 1.0,
+        "conflicting_accuracy": 0.5,
+        "group_accuracy": [
+          [
+            0.0,
+            1.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "independent_accuracy": 0.3333333333333333,
+        "objects": 90,
+        "training_like_accuracy": 0.025,
+        "training_like_minus_conflicting_pp": -47.5,
+        "training_like_minus_independent_pp": -30.83333333333333,
+        "true_class_probability_range": 0.030685700310601128,
+        "worst_group_accuracy": 0.0
+      },
+      "parameters": 150787,
+      "peak_gpu_memory_bytes": null,
+      "predictions_sha256": "058988dc76c4cb3116e079426bf2c8f92f5aebebfde8f9c9be9b50299c2b43b4",
+      "protocol": "background-v1-smoke",
+      "renderer": "pixel-centres-v1",
+      "runtime_seconds": 2.546736318967305,
+      "schema_version": 1,
+      "seed": 0,
+      "stage": "smoke",
+      "test_manifest_sha256": "780f49e2b4a24ab12d0b9fe3cce06758649bb44458f9c030c86b64b24d5e2f84"
+    }
+  ]
+}
