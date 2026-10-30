@@ -2,6 +2,8 @@
 
 Freeze this protocol and record its Git commit before the full experiment. Changes made after examining final test results require a new experiment version and fresh held-out examples.
 
+**Implementation status:** candidate v1, not frozen. Data and analytic controls are verified; neural learning checks and the full study remain unexecuted. See [RESULTS.md](RESULTS.md). The implementation details below specify the candidate before any final-test predictions are examined.
+
 ## Question and hypothesis
 
 Question: how sensitive are a small CNN and a small ViT to a background-colour shortcut under the same controlled training recipe?
@@ -17,6 +19,8 @@ Hypothesis: models trained with strongly correlated backgrounds will show worse 
 - Sample foreground appearance independently of background choice. Do not introduce class-specific borders, filenames, compression or rendering paths.
 - Use the same renderer, geometry distributions and interpolation settings for every split and condition. Background assignment is the deliberate distribution change.
 - Keep object specifications, foreground masks, seeds and a renderer-version identifier. Each record has a stable object identifier independent of the assigned background.
+
+Candidate renderer `pixel-centres-v1` uses analytic binary pixel-centre masks, no resizing and no antialiasing. Foreground RGB is `(240, 240, 230)`; background RGB values are permutations of `(184, 88, 88)`, matched in arithmetic mean brightness rather than perceptual luminance. Target areas are sampled uniformly from 260–480 pixels and shared across circle/square/triangle triplets. Centres and angles are sampled independently. Binary pixel counts differ slightly due to rasterisation; report their distributions. Masks are regenerated deterministically and verified by stored hashes rather than committed as large arrays. Object identifiers include split, data seed and index.
 
 Proposed split sizes: 10,800 training objects, 1,800 validation objects and 3,000 final test objects, with equal class counts. The training and validation sizes allow exact allocation of both 95%/2.5%/2.5% and one-third background frequencies within every class. Train, validation and test use separate deterministic random streams and disjoint object specifications. Reject duplicate foreground renderings across splits by hashing foreground pixels and masks. Reuse the same foreground specifications across training conditions to isolate the background assignment.
 
@@ -43,6 +47,12 @@ Measure the actual trainable parameter counts before freezing the configurations
 Starting shared recipe: AdamW, learning rate 3e-4, weight decay 1e-4, batch size 128, 30 epochs, cross-entropy loss and a cosine learning-rate schedule. No background-randomising augmentation in the correlated condition. Keep preprocessing identical and fixed across models.
 
 Validate this recipe during development, using training/validation only. If a model cannot learn the task, investigate and document the change before freezing the main experiment. The final test set is not used for hyperparameter choice.
+
+The candidate CNN uses bias-free convolutions and four-group GroupNorm. The ViT uses a class token, pre-norm encoder blocks and zero dropout. Preprocessing divides uint8 RGB by 255 without augmentation or additional normalisation. Use a private seeded data-order generator so model initialisation cannot change example order. Both models have separate, independently initialised encoder/convolution parameters.
+
+Development gates are fixed before main-study evaluation: at least 98% accuracy on nine balanced objects rendered on all backgrounds (27 images) for both architectures, and at least 80% final validation accuracy for both architectures and both training conditions using the shared recipe. Tiny overfit uses 300 optimisation steps, AdamW at 0.003 and weight decay 1e-4; it checks learnability rather than selecting a model. Development uses data seed 73, 1,080 training and 360 validation objects; the candidate main study uses seed 2026. A two-epoch smoke run uses 360 training, 360 validation and 90 test objects at seed 73 and cannot establish an architecture ranking. Parameter counts are checked at runtime as part of the overfit gate.
+
+`freeze` records successful development evidence, code provenance and an implementation hash. It rejects learning failures or mismatched recipes. Main-study training rejects an unfrozen candidate or changed implementation. Commit the generated frozen configuration before training. Freeze gates are implementation checks and do not replace scientific review of development curves.
 
 Full matrix: 2 architectures × 2 training distributions × seeds 0, 1 and 2 = **12 runs**. Use the final checkpoint after the fixed epoch budget. For each seed, both architectures receive the same examples and data order. Save the resolved configuration, code commit, manifest hash, dependency versions, optimiser settings and training curves.
 

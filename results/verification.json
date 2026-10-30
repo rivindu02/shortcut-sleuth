@@ -1,0 +1,42 @@
+{
+  "all_required_checks_executed": false,
+  "dependencies": {
+    "Pillow": "13.0.0",
+    "numpy": "2.5.4"
+  },
+  "javascript_checks": {
+    "executed": true,
+    "passed": true,
+    "tests": 5
+  },
+  "python": "3.14.8",
+  "python_checks": {
+    "errors": 0,
+    "failures": 0,
+    "passed": 15,
+    "run": 20,
+    "skipped": [
+      {
+        "reason": "PyTorch is not installed",
+        "test": "test_counts_forward_and_backward (test_models.ModelTests.test_counts_forward_and_backward)"
+      },
+      {
+        "reason": "PyTorch is not installed",
+        "test": "test_scratch_initialisation_reproducibility (test_models.ModelTests.test_scratch_initialisation_reproducibility)"
+      },
+      {
+        "reason": "PyTorch is not installed",
+        "test": "test_shared_inference_and_batching (test_models.ModelTests.test_shared_inference_and_batching)"
+      },
+      {
+        "reason": "PyTorch is not installed",
+        "test": "test_train_checkpoint_evaluate_roundtrip (test_models.ModelTests.test_train_checkpoint_evaluate_roundtrip)"
+      },
+      {
+        "reason": "Environment prohibits local sockets; handlers are checked in memory",
+        "test": "test_socket_http_roundtrip (test_server.ServerTests.test_socket_http_roundtrip)"
+      }
+    ]
+  },
+  "torch_available": false
+}

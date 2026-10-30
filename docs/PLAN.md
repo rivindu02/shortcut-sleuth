@@ -21,6 +21,8 @@ Deliver a reproducible experiment and an interactive comparison of background sh
 | 4. Interactive comparison | Side-by-side predictions, background controls and comparison charts | The application uses real checkpoint predictions, identifies the training condition and matches offline inference on fixed examples |
 | 5. Results and reproduction | Results report, limitations, figures and verified commands | The pipeline can be reproduced; the README states measured findings and links to evidence |
 
+Current verification: milestone 1 is complete with a full-size data audit. Milestones 2–4 are implemented, with runtime model learning and browser checks still pending. Milestone 5 publishes data/control evidence and reproduction commands; the primary model results remain incomplete. See [RESULTS.md](RESULTS.md) for the exact checks executed and their limitations.
+
 ## Proposed implementation
 
 - Python, PyTorch, NumPy and Pillow for the experiment.
@@ -40,9 +42,9 @@ shortcut_sleuth/
   evaluate.py       # paired interventions and aggregate metrics
   inference.py      # shared inference path for evaluation and application
   server.py         # inference API
+  web/              # packaged interactive comparison assets
 configs/            # frozen experiment settings
 tests/              # renderer, split, model and inference checks
-web/                # interactive comparison
 results/            # measured summaries and figures
 docs/               # protocol and results report
 ```
