@@ -47,4 +47,6 @@ jobs:
             artifacts/smoke/report/
             artifacts/smoke/runs/*/curves.json
             artifacts/smoke/runs/*/metadata.json
+            artifacts/smoke/runs/*/evaluation.json
+            artifacts/smoke/runs/*/predictions.jsonl
           if-no-files-found: warn

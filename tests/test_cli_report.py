@@ -32,7 +32,7 @@ class CliTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             for seed in (0, 1, 2):
-                row = {"protocol": "fixture", "renderer": "fixture", "experiment_sha256": "a", "implementation_sha256": "fixture",
+                row = {"protocol": "fixture", "stage": "fixture", "renderer": "fixture", "experiment_sha256": "a", "implementation_sha256": "fixture",
                        "test_manifest_sha256": "b", "architecture": "cnn", "condition": "correlated",
                        "seed": seed, "metrics": colour_only_control()}
                 save_json(root / "runs" / str(seed) / "evaluation.json", row)

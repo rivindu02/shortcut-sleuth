@@ -89,7 +89,7 @@ def train_run(config, data_dir, run_dir, architecture, condition, seed, device="
         raise ValueError("Invalid training settings")
     if seed not in config["seeds"] or architecture not in config["architectures"] or condition not in config["conditions"]:
         raise ValueError("Run identity is outside the configured experiment matrix")
-    if config["data_seed"] == 2026:
+    if config["stage"] == "study":
         if not config.get("frozen") or config.get("freeze", {}).get("implementation_sha256") != implementation_hash():
             raise ValueError("Freeze the current implementation after development checks before final-study training")
     device = check_device(device)

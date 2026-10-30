@@ -11,10 +11,12 @@ from .metrics import colour_only_control
 
 def read_config(path):
     config = json.loads(Path(path).read_text())
-    required = ("protocol", "train_size", "validation_size", "test_size", "data_seed", "seeds",
+    required = ("protocol", "stage", "train_size", "validation_size", "test_size", "data_seed", "seeds",
                 "architectures", "conditions", "epochs", "batch_size", "learning_rate", "weight_decay", "threads")
     if any(key not in config for key in required):
         raise ValueError("Configuration is missing required fields")
+    if config["stage"] not in ("study", "development", "smoke"):
+        raise ValueError("Stage must be study, development or smoke")
     if config["architectures"] != ["cnn", "vit"] or config["conditions"] != ["correlated", "independent"]:
         raise ValueError("Both architectures and training controls are required")
     if not config["seeds"] or len(set(config["seeds"])) != len(config["seeds"]):
@@ -31,7 +33,7 @@ def matrix(config, data, runs, device, evaluate=False):
     from .train import train_run
 
     # Candidate final-study configurations cannot silently become benchmarks.
-    if config["data_seed"] == 2026 and not config.get("frozen"):
+    if config["stage"] == "study" and not config.get("frozen"):
         raise ValueError("Final-study configuration must be frozen after development checks; use freeze first")
     if config.get("frozen"):
         from .train import implementation_hash
@@ -61,6 +63,8 @@ def freeze(config_path, preflight, validation_runs, output):
     from .train import code_state, implementation_hash
 
     config = read_config(config_path)
+    if config["stage"] != "study":
+        raise ValueError("Only study configurations can be frozen")
     evidence = json.loads(Path(preflight).read_text())
     current_hash = implementation_hash()
     if not evidence.get("passed") or evidence.get("implementation_sha256") != current_hash:
@@ -78,7 +82,7 @@ def freeze(config_path, preflight, validation_runs, output):
         raise ValueError("Both architectures and controls must reach 80% validation accuracy on separate development data using the shared recipe")
     if Path(output).exists():
         raise FileExistsError("Frozen configuration already exists")
-    config.update({"frozen": True, "status": "frozen", "protocol": "background-v1",
+    config.update({"frozen": True, "status": "frozen", "protocol": config["protocol"].removesuffix("-development"),
                    "freeze": {"implementation_sha256": current_hash, "code": code_state(),
                               "tiny_overfit": evidence, "development_validation": [
                                   {key: r[key] for key in ("architecture", "condition", "seed", "final_validation_accuracy", "config_sha256")}
@@ -164,7 +168,7 @@ def main(argv=None):
         elif args.command == "train":
             from .train import train_run
             config = read_config(args.config)
-            if config["data_seed"] == 2026 and not config.get("frozen"):
+            if config["stage"] == "study" and not config.get("frozen"):
                 raise ValueError("Freeze the final-study configuration before training")
             train_run(config, args.data, args.output, args.architecture, args.condition, args.seed, args.device)
         elif args.command == "matrix":
@@ -172,7 +176,7 @@ def main(argv=None):
         elif args.command == "smoke":
             from .report import build_report
             config = read_config(args.config)
-            if config["data_seed"] == 2026 or config.get("frozen"):
+            if config["stage"] == "study" or config.get("frozen"):
                 raise ValueError("Smoke runs must use separate development objects")
             root = Path(args.output)
             if not (root / "data" / "summary.json").exists():

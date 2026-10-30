@@ -4,4 +4,5 @@ recursive-include docs *.md
 recursive-include shortcut_sleuth/web *.html *.css *.js
 recursive-include tests *.py *.cjs
 recursive-include scripts *.py
+recursive-include results *.json *.png *.md *.svg
 exclude AGENTS.md

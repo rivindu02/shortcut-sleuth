@@ -13,7 +13,7 @@ def build_report(run_root, output):
     if not files:
         raise ValueError("No evaluation files found; train and evaluate first")
     rows = [json.loads(path.read_text()) for path in files]
-    for key in ("protocol", "renderer", "experiment_sha256", "implementation_sha256", "test_manifest_sha256"):
+    for key in ("protocol", "stage", "renderer", "experiment_sha256", "implementation_sha256", "test_manifest_sha256"):
         if len({row[key] for row in rows}) != 1:
             raise ValueError(f"Cannot pool incompatible {key} values")
     identities = [(r["architecture"], r["condition"], r["seed"]) for r in rows]
@@ -25,7 +25,7 @@ def build_report(run_root, output):
         subset = sorted((r for r in rows if r["architecture"] == architecture and r["condition"] == condition), key=lambda r: r["seed"])
         groups[name] = {"seeds": [r["seed"] for r in subset], **aggregate_seeds([r["metrics"] for r in subset])}
     seed_sets = {tuple(g["seeds"]) for g in groups.values()}
-    complete = rows[0]["protocol"] == "background-v1" and len(groups) == 4 and seed_sets == {(0, 1, 2)}
+    complete = rows[0]["stage"] == "study" and len(groups) == 4 and seed_sets == {(0, 1, 2)}
     output = Path(output)
     result = {"protocol": rows[0]["protocol"], "full_matrix_complete": complete, "groups": groups, "runs": rows}
     save_json(output / "metrics.json", result)

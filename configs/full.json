@@ -1,5 +1,6 @@
 {
   "protocol": "background-v1-development",
+  "stage": "study",
   "status": "candidate; freeze after tiny overfit and validation checks",
   "train_size": 10800,
   "validation_size": 1800,

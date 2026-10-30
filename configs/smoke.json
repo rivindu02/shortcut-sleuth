@@ -1,5 +1,6 @@
 {
   "protocol": "background-v1-smoke",
+  "stage": "smoke",
   "status": "pipeline check only; no benchmark claims",
   "train_size": 360,
   "validation_size": 360,

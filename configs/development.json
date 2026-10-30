@@ -1,5 +1,6 @@
 {
   "protocol": "background-v1-development",
+  "stage": "development",
   "status": "development validation only; separate objects from final study",
   "train_size": 1080,
   "validation_size": 360,
