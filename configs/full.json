@@ -1,6 +1,7 @@
 {
   "protocol": "background-v1-development",
   "stage": "study",
+  "candidate_revision": 3,
   "status": "candidate; freeze after tiny overfit and validation checks",
   "train_size": 10800,
   "validation_size": 1800,
@@ -9,7 +10,7 @@
   "seeds": [0, 1, 2],
   "architectures": ["cnn", "vit"],
   "conditions": ["correlated", "independent"],
-  "epochs": 30,
+  "epochs": 60,
   "batch_size": 128,
   "learning_rate": 0.0003,
   "weight_decay": 0.0001,

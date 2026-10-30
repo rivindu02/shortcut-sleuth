@@ -1,0 +1,18 @@
+{
+  "protocol": "background-v1-development",
+  "stage": "development",
+  "candidate_revision": 3,
+  "status": "development validation at the primary study sample and update budget",
+  "train_size": 10800,
+  "validation_size": 1800,
+  "test_size": 90,
+  "data_seed": 73,
+  "seeds": [0],
+  "architectures": ["cnn", "vit"],
+  "conditions": ["correlated", "independent"],
+  "epochs": 30,
+  "batch_size": 128,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.0001,
+  "threads": 2
+}

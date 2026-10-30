@@ -71,14 +71,17 @@ class ShapeDataset(Dataset):
     def __init__(self, manifest_path):
         self.manifest, self.objects = load_manifest(manifest_path)
         self.backgrounds = [row["background"] for row in self.manifest["objects"]]
+        # Inputs are deterministic and there is no stochastic augmentation.
+        # Caching avoids re-rendering and per-item tensor conversion every epoch.
+        # The full 10,800-object training cache occupies about 506 MiB of RAM.
+        images = np.stack([render(obj, b)[0] for obj, b in zip(self.objects, self.backgrounds)])
+        self.images = preprocess(images)
 
     def __len__(self):
         return len(self.objects)
 
     def __getitem__(self, i):
-        obj = self.objects[i]
-        image = render(obj, self.backgrounds[i])[0]
-        return preprocess(image[None])[0], obj.label
+        return self.images[i], self.objects[i].label
 
 
 def train_run(config, data_dir, run_dir, architecture, condition, seed, device="cpu"):
@@ -119,6 +122,7 @@ def train_run(config, data_dir, run_dir, architecture, condition, seed, device="
                 "train_manifest_sha256": train.manifest["sha256"], "validation_manifest_sha256": validation.manifest["sha256"],
                 "optimizer": "AdamW", "scheduler": "CosineAnnealingLR", "preprocessing": "uint8 RGB / 255; NCHW",
                 "data_order_seed": seed, "checkpoint_selection": "final epoch", "deterministic_algorithms": True}
+    metadata["data_cache"] = "deterministic preprocessed CPU tensors; no stochastic augmentation"
     run_dir.mkdir(parents=True, exist_ok=True)
     save_json(run_dir / "config.json", metadata)
     if device.type == "cuda":

@@ -96,6 +96,22 @@ class ModelTests(unittest.TestCase):
                     with self.assertRaises(FileExistsError):
                         evaluate_checkpoint(run / "final.pt", root / "data")
 
+    def test_cached_dataset_preserves_rendered_inputs(self):
+        import torch
+        from shortcut_sleuth.data import prepare, render
+        from shortcut_sleuth.inference import preprocess
+        from shortcut_sleuth.train import ShapeDataset
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            prepare(root, 360, 360, 90, seed=73)
+            for condition in ("correlated", "independent"):
+                dataset = ShapeDataset(root / f"train-{condition}.json")
+                for i in (0, 1, 2, 119, 359):
+                    image, label = dataset[i]
+                    expected = preprocess(render(dataset.objects[i], dataset.backgrounds[i])[0][None])[0]
+                    self.assertTrue(torch.equal(image, expected))
+                    self.assertEqual(label, dataset.objects[i].label)
+
 
 if __name__ == "__main__":
     unittest.main()
