@@ -13,8 +13,8 @@
   "python_checks": {
     "errors": 0,
     "failures": 0,
-    "passed": 21,
-    "run": 21,
+    "passed": 22,
+    "run": 22,
     "skipped": []
   },
   "torch_available": true

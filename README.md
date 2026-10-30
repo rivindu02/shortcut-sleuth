@@ -4,11 +4,11 @@
 
 A controlled CNN vs. Vision Transformer experiment with an interactive background-swap lab. Train both models from scratch, keep each foreground pixel fixed, and measure what happens when the background shortcut changes.
 
-**Status:** the pipeline and local application are implemented. Data, analytic controls, HTTP handlers and interface state tests have been verified. **Model training and the 12-run study have not been executed.** See the [verification report](docs/RESULTS.md) for evidence and remaining checks.
+**Status:** the smoke matrix, both scratch models, checkpoint inference, all automated checks and real desktop/mobile browser behaviour have been verified. All four development learning gates passed; earlier failures and revisions are preserved. **The final 12-run study is pending protocol freeze and execution.** See the [verification report](docs/RESULTS.md).
 
-<p align="center"><img src="results/paired-examples.png" width="384" alt="Three deterministic shapes, each rendered on coral, mint and violet backgrounds with identical foreground pixels"></p>
+<p align="center"><img src="results/browser-smoke/lab-desktop.png" width="1100" alt="Actual background-swap lab with CNN and ViT probabilities from four trained smoke checkpoints"></p>
 
-*Actual renderer output: rows are circle, square and triangle; columns are the three backgrounds. These are paired examples, not model predictions.*
+*Actual browser capture using four smoke checkpoints. Two-epoch smoke results demonstrate the pipeline; they are not the primary architecture comparison. [Mobile capture](results/browser-smoke/lab-mobile.png) · [Paired renderer examples](results/paired-examples.png).*
 
 ## Features
 
@@ -51,7 +51,7 @@ python -m shortcut_sleuth smoke --output artifacts/smoke
 python -m shortcut_sleuth serve --runs artifacts/smoke/runs
 ```
 
-The smoke command prepares separate development objects, trains all four model/condition combinations for two epochs, evaluates final checkpoints and writes a Markdown report and SVG figure to `artifacts/smoke/report/`. **It has not been executed in the current verification environment.** Two-epoch scores must not be presented as the main study.
+The smoke command prepares separate development objects, trains all four model/condition combinations for two epochs, evaluates final checkpoints and writes a Markdown report and SVG figure to `artifacts/smoke/report/`. The [executed smoke report](results/smoke/REPORT.md) retains all four measured outcomes, including the underfit independent controls. Two-epoch scores must not be presented as the main study.
 
 ## Verification
 
@@ -62,7 +62,16 @@ python -m shortcut_sleuth overfit --output artifacts/overfit.json
 
 Verification requires every Python and JavaScript check to execute. The overfit command requires both models to reach 98% accuracy on 27 balanced renders of nine training objects and parameter counts within 20%. This is a learning sanity check, not a generalisation result.
 
-To check the supported subset when PyTorch or local sockets are unavailable, omit `--require-all`; skips remain visible in the JSON record. The [GitHub workflow](.github/workflows/ci.yml) requires all checks, builds the package, runs tiny overfit and executes the smoke pipeline. Its definition is not evidence of a passing remote run.
+To check a supported subset when PyTorch or local sockets are unavailable, omit `--require-all`; skips remain visible in the JSON record. The [GitHub workflow](.github/workflows/ci.yml) requires all checks, builds the package, runs tiny overfit, executes the smoke pipeline and checks the real browser. Its definition is not evidence of a passing remote run.
+
+For browser verification and reproducible screenshots:
+
+```bash
+python -m pip install -e '.[browser]'
+python -m playwright install chromium
+python scripts/browser_check.py --output artifacts/browser-control
+python scripts/browser_check.py --runs artifacts/smoke/runs --output artifacts/browser-smoke
+```
 
 Data and controls can also be checked independently:
 
@@ -108,7 +117,7 @@ python -m shortcut_sleuth matrix --config configs/frozen-v1.json \
 python -m shortcut_sleuth report --runs artifacts/full-runs --output results/background-v1
 ```
 
-This runs 2 architectures × 2 conditions × 3 seeds = **12 runs**, with 30 epochs each. CPU is the default. After inspecting GPU availability, pass an explicit device such as `--device cuda:0` where appropriate. The project never automatically chooses a GPU.
+This runs 2 architectures × 2 conditions × 3 seeds = **12 runs**, with 60 epochs each. The original 30-epoch candidate underfit during development; the [protocol history](docs/EXPERIMENT_PROTOCOL.md#candidate-revision-history) explains the change. CPU is the default. After inspecting GPU availability, pass an explicit device such as `--device cuda:0` where appropriate. The project never automatically chooses a GPU. Full training caches about 600 MiB of deterministic input tensors in system RAM, in addition to model/runtime memory.
 
 The final checkpoint is used without test-based selection. Repeating `matrix` resumes completed runs. Partial run directories require inspection or a new output root; existing datasets and evaluations are never silently overwritten. Implementation changes after freezing require a new version and freeze. Changes informed by final-test results also require fresh held-out objects.
 

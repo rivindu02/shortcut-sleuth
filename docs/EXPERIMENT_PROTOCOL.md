@@ -2,7 +2,7 @@
 
 Freeze this protocol and record its Git commit before the full experiment. Changes made after examining final test results require a new experiment version and fresh held-out examples.
 
-**Implementation status:** candidate v1, not frozen. Data and analytic controls are verified; neural learning checks and the full study remain unexecuted. See [RESULTS.md](RESULTS.md). The implementation details below specify the candidate before any final-test predictions are examined.
+**Implementation status:** candidate v1, not frozen. Data, analytic controls, scratch-model learning, smoke runs and real browser checks are verified. All four 60-epoch development gates passed before the full study. See [RESULTS.md](RESULTS.md). The implementation details below specify the candidate before any final-study test predictions are examined.
 
 ## Question and hypothesis
 

@@ -1,0 +1,142 @@
+{
+  "cross_split_duplicate_foregrounds": 0,
+  "foreground_swap_comparisons": 25380,
+  "passed": true,
+  "protocol": "background-v1-development",
+  "renderer": "pixel-centres-v1",
+  "seed": 73,
+  "splits": {
+    "test-paired": {
+      "contingency": [
+        [
+          30,
+          30,
+          30
+        ],
+        [
+          30,
+          30,
+          30
+        ],
+        [
+          30,
+          30,
+          30
+        ]
+      ],
+      "count": 90,
+      "sha256": "780f49e2b4a24ab12d0b9fe3cce06758649bb44458f9c030c86b64b24d5e2f84"
+    },
+    "train-correlated": {
+      "contingency": [
+        [
+          3420,
+          90,
+          90
+        ],
+        [
+          90,
+          3420,
+          90
+        ],
+        [
+          90,
+          90,
+          3420
+        ]
+      ],
+      "count": 10800,
+      "sha256": "5ab384f7d3722d730f47b9a0704ee2c538afdab92d15d6408977957459de2050"
+    },
+    "train-independent": {
+      "contingency": [
+        [
+          1200,
+          1200,
+          1200
+        ],
+        [
+          1200,
+          1200,
+          1200
+        ],
+        [
+          1200,
+          1200,
+          1200
+        ]
+      ],
+      "count": 10800,
+      "sha256": "029f51ce9bef12b9ab68b650944e32524325721768a7680ec1e123194e46f636"
+    },
+    "validation-correlated": {
+      "contingency": [
+        [
+          570,
+          15,
+          15
+        ],
+        [
+          15,
+          570,
+          15
+        ],
+        [
+          15,
+          15,
+          570
+        ]
+      ],
+      "count": 1800,
+      "sha256": "eb71be989608c73608aaa67330982fefb2b87b4d71b3d781b13d373cb88ccde0"
+    },
+    "validation-independent": {
+      "contingency": [
+        [
+          200,
+          200,
+          200
+        ],
+        [
+          200,
+          200,
+          200
+        ],
+        [
+          200,
+          200,
+          200
+        ]
+      ],
+      "count": 1800,
+      "sha256": "affceb0a2ae5018738cc0426baa8fe428f0308284b05035288226c96754178ad"
+    }
+  },
+  "training_foreground_area": {
+    "circle": {
+      "mean_pixels": 369.34166666666664,
+      "quantiles_05_50_95": [
+        270.95000000000005,
+        369.0,
+        469.0
+      ]
+    },
+    "square": {
+      "mean_pixels": 369.365,
+      "quantiles_05_50_95": [
+        271.0,
+        369.0,
+        469.0
+      ]
+    },
+    "triangle": {
+      "mean_pixels": 369.33722222222224,
+      "quantiles_05_50_95": [
+        271.0,
+        369.0,
+        469.0
+      ]
+    }
+  },
+  "unique_foregrounds": 12690
+}
