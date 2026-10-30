@@ -1,0 +1,16 @@
+{
+  "protocol": "background-v1-development",
+  "status": "development validation only; separate objects from final study",
+  "train_size": 1080,
+  "validation_size": 360,
+  "test_size": 90,
+  "data_seed": 73,
+  "seeds": [0],
+  "architectures": ["cnn", "vit"],
+  "conditions": ["correlated", "independent"],
+  "epochs": 30,
+  "batch_size": 128,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.0001,
+  "threads": 2
+}

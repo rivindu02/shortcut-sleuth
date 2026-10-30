@@ -51,7 +51,8 @@ class DataTests(unittest.TestCase):
             self.assertEqual(summary["unique_foregrounds"], 810)
             records, fingerprints = {}, set()
             for split in ("train", "validation", "test"):
-                value, objects = load_manifest(Path(tmp) / f"{split}-independent.json")
+                name = "test-paired" if split == "test" else f"{split}-independent"
+                value, objects = load_manifest(Path(tmp) / f"{name}.json")
                 current = {foreground_hash(o) for o in objects}
                 self.assertFalse(current & fingerprints)
                 fingerprints |= current

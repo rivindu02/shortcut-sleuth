@@ -4,7 +4,7 @@
   "train_size": 360,
   "validation_size": 360,
   "test_size": 90,
-  "data_seed": 2026,
+  "data_seed": 73,
   "seeds": [0],
   "architectures": ["cnn", "vit"],
   "conditions": ["correlated", "independent"],

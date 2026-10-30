@@ -128,7 +128,14 @@ def assignment(objects, condition, seed=2026):
 
 
 def manifest(objects, condition, seed):
-    backgrounds, table = assignment(objects, condition, seed)
+    if condition == "paired":
+        # Test objects have no single assigned background: each is evaluated on
+        # all three. The table counts paired renders, not independent objects.
+        backgrounds = np.full(len(objects), -1, dtype=np.int64)
+        counts = np.bincount([o.label for o in objects], minlength=3)
+        table = np.repeat(counts[:, None], 3, axis=1)
+    else:
+        backgrounds, table = assignment(objects, condition, seed)
     result = {"renderer": RENDERER_VERSION, "condition": condition, "assignment_seed": seed,
               "contingency": table.tolist(),
               "objects": [{**asdict(o), "foreground_hash": foreground_hash(o), "background": int(b)}
@@ -156,7 +163,7 @@ def prepare(directory, train_size=10800, validation_size=1800, test_size=3000, s
     summary = {"renderer": RENDERER_VERSION, "protocol": protocol, "seed": seed, "splits": {}}
     for split, size in (("train", train_size), ("validation", validation_size), ("test", test_size)):
         objects = make_objects(size, split, seed, seen)
-        conditions = ("independent",) if split == "test" else ("correlated", "independent")
+        conditions = ("paired",) if split == "test" else ("correlated", "independent")
         for condition in conditions:
             value = manifest(objects, condition, seed)
             name = f"{split}-{condition}"
