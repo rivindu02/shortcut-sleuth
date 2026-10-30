@@ -13,7 +13,7 @@ def build_report(run_root, output):
     if not files:
         raise ValueError("No evaluation files found; train and evaluate first")
     rows = [json.loads(path.read_text()) for path in files]
-    for key in ("protocol", "renderer", "experiment_sha256", "test_manifest_sha256"):
+    for key in ("protocol", "renderer", "experiment_sha256", "implementation_sha256", "test_manifest_sha256"):
         if len({row[key] for row in rows}) != 1:
             raise ValueError(f"Cannot pool incompatible {key} values")
     identities = [(r["architecture"], r["condition"], r["seed"]) for r in rows]

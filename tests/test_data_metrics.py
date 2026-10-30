@@ -6,7 +6,7 @@ import unittest
 
 import numpy as np
 
-from shortcut_sleuth.data import (BACKGROUNDS, FOREGROUND, assignment, foreground_hash,
+from shortcut_sleuth.data import (BACKGROUNDS, FOREGROUND, assignment, audit, foreground_hash,
                                  load_manifest, make_objects, mask_for, prepare, render)
 from shortcut_sleuth.metrics import aggregate_seeds, colour_only_control, paired_metrics
 
@@ -21,7 +21,6 @@ class DataTests(unittest.TestCase):
 
     def test_foregrounds_and_area(self):
         objects = make_objects(600, "development")
-        errors = []
         for obj in objects:
             images, masks = zip(*(render(obj, b) for b in range(3)))
             mask = masks[0]
@@ -31,10 +30,14 @@ class DataTests(unittest.TestCase):
                 np.testing.assert_array_equal(masks[b], mask)
                 np.testing.assert_array_equal(images[b][mask], np.broadcast_to(FOREGROUND, (mask.sum(), 3)))
                 np.testing.assert_array_equal(images[b][~mask], np.broadcast_to(BACKGROUNDS[b], ((~mask).sum(), 3)))
-            errors.append(abs(mask.sum() - obj.area) / obj.area)
-        self.assertLess(max(errors), .06)
+            # Binary pixel-centre rasterisation has boundary error proportional
+            # to perimeter, rather than a fixed fraction of target area.
+            self.assertLessEqual(abs(mask.sum() - obj.area), 4 * np.sqrt(obj.area))
+        targets = [[o.area for o in objects if o.label == label] for label in range(3)]
+        self.assertEqual(targets[0], targets[1])
+        self.assertEqual(targets[0], targets[2])
         means = [np.mean([mask_for(o).sum() for o in objects if o.label == label]) for label in range(3)]
-        self.assertLess(max(means) - min(means), 30)
+        self.assertLess(max(means) - min(means), 2)
 
     def test_exact_allocation_and_shared_foregrounds(self):
         objects = make_objects(360, "train")
@@ -49,6 +52,7 @@ class DataTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             summary = prepare(tmp, 360, 360, 90)
             self.assertEqual(summary["unique_foregrounds"], 810)
+            self.assertTrue(audit(tmp)["passed"])
             records, fingerprints = {}, set()
             for split in ("train", "validation", "test"):
                 name = "test-paired" if split == "test" else f"{split}-independent"

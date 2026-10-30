@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 import sys
 
-from .data import example_grid, prepare, save_json
+from .data import audit, example_grid, prepare, save_json
 from .metrics import colour_only_control
 
 
@@ -93,6 +93,9 @@ def main(argv=None):
     p = sub.add_parser("prepare", help="Create immutable split manifests and reject foreground leakage")
     p.add_argument("--config", default="configs/smoke.json")
     p.add_argument("--output", required=True)
+    p = sub.add_parser("audit", help="Check every manifest, split and paired foreground without fitting models")
+    p.add_argument("--data", required=True)
+    p.add_argument("--output", required=True)
     p = sub.add_parser("grid", help="Render paired examples")
     p.add_argument("--output", required=True)
     p.add_argument("--seed", type=int, default=73)
@@ -143,6 +146,10 @@ def main(argv=None):
             config = read_config(args.config)
             print(json.dumps(prepare(args.output, config["train_size"], config["validation_size"], config["test_size"],
                                      config["data_seed"], config["protocol"]), indent=2))
+        elif args.command == "audit":
+            result = audit(args.data)
+            save_json(args.output, result)
+            print(f"Audit passed: {result['unique_foregrounds']} unique objects; {result['foreground_swap_comparisons']} exact foreground comparisons")
         elif args.command == "grid":
             example_grid(args.output, args.seed)
         elif args.command == "control":

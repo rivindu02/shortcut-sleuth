@@ -40,7 +40,8 @@ def evaluate_checkpoint(checkpoint, data_dir, output=None, device="cpu"):
     experiment = {k: v for k, v in metadata["config"].items() if k not in ("architecture", "condition", "seed")}
     result = {"schema_version": 1, "architecture": metadata["architecture"], "condition": metadata["condition"],
               "seed": metadata["seed"], "protocol": metadata["config"]["protocol"], "renderer": metadata["renderer"],
-              "experiment_sha256": digest(experiment), "test_manifest_sha256": manifest["sha256"],
+              "experiment_sha256": digest(experiment), "implementation_sha256": metadata["implementation_sha256"],
+              "test_manifest_sha256": manifest["sha256"],
               "checkpoint_sha256": metadata["checkpoint_sha256"],
               "predictions_sha256": hashlib.sha256(prediction_file.read_bytes()).hexdigest(),
               "code": metadata["code"], "parameters": metadata["parameters"],

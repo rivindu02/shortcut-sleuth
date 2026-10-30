@@ -1,4 +1,6 @@
 import copy
+from contextlib import redirect_stdout
+import io
 import json
 from pathlib import Path
 import tempfile
@@ -16,7 +18,8 @@ class CliTests(unittest.TestCase):
         self.assertNotEqual(config["data_seed"], read_config("configs/full.json")["data_seed"])
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "control.json"
-            main(["control", "--output", str(path)])
+            with redirect_stdout(io.StringIO()):
+                main(["control", "--output", str(path)])
             self.assertEqual(json.loads(path.read_text()), colour_only_control())
             bad = copy.deepcopy(config)
             bad["train_size"] = 100
@@ -29,7 +32,7 @@ class CliTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             for seed in (0, 1, 2):
-                row = {"protocol": "fixture", "renderer": "fixture", "experiment_sha256": "a",
+                row = {"protocol": "fixture", "renderer": "fixture", "experiment_sha256": "a", "implementation_sha256": "fixture",
                        "test_manifest_sha256": "b", "architecture": "cnn", "condition": "correlated",
                        "seed": seed, "metrics": colour_only_control()}
                 save_json(root / "runs" / str(seed) / "evaluation.json", row)

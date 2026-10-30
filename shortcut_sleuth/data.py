@@ -89,11 +89,13 @@ def make_objects(size, split, seed=2026, seen=None):
     objects = []
     for i in range(size):
         label = i % 3
-        for _ in range(10000):
+        if label == 0:
+            # Every label receives exactly the same target-area distribution.
             area = float(rng.uniform(260, 480))
+        for _ in range(10000):
             # Shared conservative enclosing radius for all labels.
             radius = math.sqrt(4 * area / (3 * math.sqrt(3))) + 2
-            spec = ObjectSpec(f"{split}-{i:06d}", label, float(rng.uniform(radius, SIZE - radius)),
+            spec = ObjectSpec(f"{split}-{seed}-{i:06d}", label, float(rng.uniform(radius, SIZE - radius)),
                               float(rng.uniform(radius, SIZE - radius)), area, float(rng.uniform(0, 2 * math.pi)))
             fingerprint = foreground_hash(spec)
             if fingerprint not in seen:
@@ -175,10 +177,54 @@ def prepare(directory, train_size=10800, validation_size=1800, test_size=3000, s
 
 
 def example_grid(path, seed=2026):
-    objects = make_objects(9, "demo", seed)
-    grid = Image.new("RGB", (SIZE * 3, SIZE * 9))
+    objects = make_objects(3, "demo", seed)
+    grid = Image.new("RGB", (SIZE * 3, SIZE * 3))
     for row, obj in enumerate(objects):
         for background in range(3):
             grid.paste(Image.fromarray(render(obj, background)[0]), (SIZE * background, SIZE * row))
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     grid.save(path)
+
+
+def audit(directory):
+    """Recheck stored manifests and every foreground intervention, without fitting."""
+    directory = Path(directory)
+    summary = json.loads((directory / "summary.json").read_text())
+    seen_hashes, seen_ids = set(), set()
+    area_summary = {}
+    for split in ("train", "validation", "test"):
+        condition = "paired" if split == "test" else "independent"
+        value, objects = load_manifest(directory / f"{split}-{condition}.json")
+        if value["sha256"] != summary["splits"][f"{split}-{condition}"]["sha256"]:
+            raise ValueError("Summary manifest hash mismatch")
+        if value["sha256"] != manifest(objects, condition, value["assignment_seed"])["sha256"]:
+            raise ValueError("Manifest allocations do not match the renderer")
+        hashes = {foreground_hash(o) for o in objects}
+        ids = {o.object_id for o in objects}
+        if len(hashes) != len(objects) or len(ids) != len(objects) or seen_hashes & hashes or seen_ids & ids:
+            raise ValueError("Duplicate foreground or object ID across splits")
+        seen_hashes |= hashes
+        seen_ids |= ids
+        if split != "test":
+            correlated, paired = load_manifest(directory / f"{split}-correlated.json")
+            if paired != objects or correlated["sha256"] != manifest(objects, "correlated", correlated["assignment_seed"])["sha256"]:
+                raise ValueError("Training conditions do not share the same foregrounds or exact allocations")
+            if correlated["sha256"] != summary["splits"][f"{split}-correlated"]["sha256"]:
+                raise ValueError("Summary manifest hash mismatch")
+        # Inspect area distributions using training objects only.
+        if split == "train":
+            for label, name in enumerate(SHAPES):
+                areas = [int(mask_for(o).sum()) for o in objects if o.label == label]
+                area_summary[name] = {"mean_pixels": float(np.mean(areas)), "quantiles_05_50_95": np.quantile(areas, [.05, .5, .95]).tolist()}
+        for obj in objects:
+            reference, mask = render(obj, 0)
+            if not mask.any() or mask[[0, -1]].any() or mask[:, [0, -1]].any():
+                raise ValueError("Empty or clipped foreground")
+            for background in (1, 2):
+                image, swapped_mask = render(obj, background)
+                if not np.array_equal(mask, swapped_mask) or not np.array_equal(reference[mask], image[mask]):
+                    raise ValueError("Background intervention changed foreground pixels")
+    if len(seen_hashes) != summary["unique_foregrounds"]:
+        raise ValueError("Unique foreground count differs from summary")
+    return {"passed": True, **summary, "training_foreground_area": area_summary,
+            "foreground_swap_comparisons": 2 * len(seen_hashes), "cross_split_duplicate_foregrounds": 0}

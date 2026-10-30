@@ -1,0 +1,50 @@
+name: Validate experiment
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated CPU dependencies
+        run: |
+          python -m venv .venv
+          .venv/bin/python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+          .venv/bin/python -m pip install -e . build
+      - name: Python and JavaScript checks (all required)
+        run: .venv/bin/python scripts/verify.py --require-all --output artifacts/verification.json
+      - name: Build distribution with bundled demo assets
+        run: .venv/bin/python -m build
+      - name: Tiny balanced learning check
+        run: .venv/bin/python -m shortcut_sleuth overfit --output artifacts/overfit.json
+      - name: Full smoke pipeline
+        run: |
+          .venv/bin/python -m shortcut_sleuth smoke --output artifacts/smoke
+          .venv/bin/python -m shortcut_sleuth audit --data artifacts/smoke/data --output artifacts/smoke-audit.json
+      - name: Retain validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-evidence
+          path: |
+            artifacts/verification.json
+            artifacts/overfit.json
+            artifacts/smoke-audit.json
+            artifacts/smoke/report/
+            artifacts/smoke/runs/*/curves.json
+            artifacts/smoke/runs/*/metadata.json
+          if-no-files-found: warn
