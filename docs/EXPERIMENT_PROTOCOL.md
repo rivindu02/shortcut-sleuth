@@ -1,4 +1,4 @@
-# Experiment protocol — proposed v1
+# Experiment protocol — candidate v1, revision 2
 
 Freeze this protocol and record its Git commit before the full experiment. Changes made after examining final test results require a new experiment version and fresh held-out examples.
 
@@ -50,7 +50,7 @@ Validate this recipe during development, using training/validation only. If a mo
 
 The candidate CNN uses bias-free convolutions and four-group GroupNorm. The ViT uses a class token, pre-norm encoder blocks and zero dropout. Preprocessing divides uint8 RGB by 255 without augmentation or additional normalisation. Use a private seeded data-order generator so model initialisation cannot change example order. Both models have separate, independently initialised encoder/convolution parameters.
 
-Development gates are fixed before main-study evaluation: at least 98% accuracy on nine balanced objects rendered on all backgrounds (27 images) for both architectures, and at least 80% final validation accuracy for both architectures and both training conditions using the shared recipe. Tiny overfit uses 300 optimisation steps, AdamW at 0.003 and weight decay 1e-4; it checks learnability rather than selecting a model. Development uses data seed 73, 1,080 training and 360 validation objects; the candidate main study uses seed 2026. A two-epoch smoke run uses 360 training, 360 validation and 90 test objects at seed 73 and cannot establish an architecture ranking. Parameter counts are checked at runtime as part of the overfit gate.
+Development gates are fixed before main-study evaluation: at least 98% accuracy on nine balanced objects rendered on all backgrounds (27 images) for both architectures, and at least 80% final validation accuracy for both architectures and both training conditions using the shared recipe. Tiny overfit uses 300 optimisation steps, AdamW at 0.0003 and weight decay 1e-4; it checks learnability rather than selecting a model. Development uses data seed 73, 1,080 training and 360 validation objects; the candidate main study uses seed 2026. A two-epoch smoke run uses 360 training, 360 validation and 90 test objects at seed 73 and cannot establish an architecture ranking. Parameter counts are checked at runtime as part of the overfit gate.
 
 `freeze` records successful development evidence, code provenance and an implementation hash. It rejects learning failures or mismatched recipes. Main-study training rejects an unfrozen candidate or changed implementation. Commit the generated frozen configuration before training. Freeze gates are implementation checks and do not replace scientific review of development curves.
 
@@ -101,3 +101,8 @@ Only after the background study works, add a seeded neutral occluder and report 
 - Verified commands to reproduce rendering, a smoke run, training, evaluation and the demo.
 
 Large artifacts, environments and checkpoints stay out of Git. If checkpoints are later distributed, use a documented artifact location with hashes. Never fabricate benchmark results or a completed-feature screenshot.
+
+## Candidate revision history
+
+- Revision 1 proposed a separate tiny-overfit learning rate of 0.003. The first executed check fit 27/27 renders with the CNN and 17/27 with the ViT, so the required joint learning gate failed. The unmodified result is retained in [overfit-initial.json](../results/development/overfit-initial.json).
+- Revision 2 changes the tiny-overfit default to the shared training learning rate, 0.0003, and records its loss curve. This investigates a development learning failure; the main training recipe is unchanged. No final-study test predictions were examined before this revision. The gate must still pass before freezing.

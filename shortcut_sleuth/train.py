@@ -169,9 +169,9 @@ def train_run(config, data_dir, run_dir, architecture, condition, seed, device="
     return metadata
 
 
-def tiny_overfit(output, steps=300, device="cpu", threads=2):
-    if steps < 1:
-        raise ValueError("Steps must be positive")
+def tiny_overfit(output, steps=300, device="cpu", threads=2, learning_rate=.0003):
+    if steps < 1 or learning_rate <= 0:
+        raise ValueError("Steps and learning rate must be positive")
     device = check_device(device)
     objects = make_objects(9, "tiny", seed=907)
     images = np.stack([render(obj, b)[0] for obj in objects for b in range(3)])
@@ -181,8 +181,9 @@ def tiny_overfit(output, steps=300, device="cpu", threads=2):
     for architecture in ("cnn", "vit"):
         seed_everything(0, threads)
         model = build_model(architecture).to(device)
-        optimizer = torch.optim.AdamW(model.parameters(), lr=.003, weight_decay=.0001)
-        for _ in range(steps):
+        optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate, weight_decay=.0001)
+        curves = []
+        for step in range(steps):
             model.train()
             optimizer.zero_grad(set_to_none=True)
             loss = nn.functional.cross_entropy(model(x), labels)
@@ -190,10 +191,15 @@ def tiny_overfit(output, steps=300, device="cpu", threads=2):
                 raise RuntimeError("Nonfinite loss in tiny overfit")
             loss.backward()
             optimizer.step()
+            if step == 0 or (step + 1) % 25 == 0 or step + 1 == steps:
+                row = {"step": step + 1, "loss": float(loss.item())}
+                curves.append(row)
+                print(f"Tiny overfit {architecture} step {step + 1}: loss={row['loss']:.5f}", flush=True)
         probabilities = Predictor(model, device).images(images)
         accuracy = float((probabilities.argmax(1) == labels.cpu().numpy()).mean())
         results[architecture] = {"accuracy": accuracy, "passed": accuracy >= .98,
-                                 "parameters": parameter_count(model), "steps": steps}
+                                 "parameters": parameter_count(model), "steps": steps,
+                                 "learning_rate": learning_rate, "curves": curves}
         print(f"Tiny overfit {architecture}: {accuracy:.3f}", flush=True)
     ratio = max(r["parameters"] for r in results.values()) / min(r["parameters"] for r in results.values())
     evidence = {"passed": all(r["passed"] for r in results.values()) and ratio <= 1.2,

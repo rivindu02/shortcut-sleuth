@@ -1,0 +1,39 @@
+{
+  "code": {
+    "commit": "723ca4cd801d1a5d0b4c1fffe166bb2a3b373591",
+    "dirty": false
+  },
+  "environment": {
+    "cuda": "13.0",
+    "dependencies": {
+      "Pillow": "12.3.0",
+      "numpy": "2.2.6",
+      "torch": "2.13.0"
+    },
+    "device": "cpu",
+    "hardware": "x86_64",
+    "machine": "x86_64",
+    "python": "3.10.20",
+    "system": "Linux"
+  },
+  "implementation_sha256": "9c4ad0c349f8fc924f451d2bc14d24d1ad5143c2cb9d591e24c83f01250873f1",
+  "objects": 9,
+  "parameter_ratio": 1.0135024902677285,
+  "passed": false,
+  "renderer": "pixel-centres-v1",
+  "renders": 27,
+  "results": {
+    "cnn": {
+      "accuracy": 1.0,
+      "parameters": 152823,
+      "passed": true,
+      "steps": 300
+    },
+    "vit": {
+      "accuracy": 0.6296296296296297,
+      "parameters": 150787,
+      "passed": false,
+      "steps": 300
+    }
+  }
+}

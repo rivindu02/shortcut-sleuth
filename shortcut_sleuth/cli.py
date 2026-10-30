@@ -108,6 +108,7 @@ def main(argv=None):
     p = sub.add_parser("overfit", help="Require both scratch models to fit 27 balanced renders")
     p.add_argument("--output", required=True)
     p.add_argument("--steps", type=int, default=300)
+    p.add_argument("--learning-rate", type=float, default=.0003)
     p.add_argument("--device", default="cpu")
     p = sub.add_parser("train", help="Train one fixed-budget run without final-test access")
     p.add_argument("--config", default="configs/smoke.json")
@@ -163,7 +164,7 @@ def main(argv=None):
             print(json.dumps(result, indent=2))
         elif args.command == "overfit":
             from .train import tiny_overfit
-            if not tiny_overfit(args.output, args.steps, args.device)["passed"]:
+            if not tiny_overfit(args.output, args.steps, args.device, learning_rate=args.learning_rate)["passed"]:
                 parser.exit(1, "Tiny balanced overfit failed; inspect evidence before full training.\n")
         elif args.command == "train":
             from .train import train_run
