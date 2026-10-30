@@ -1,0 +1,16 @@
+{
+  "protocol": "background-v1-smoke",
+  "status": "pipeline check only; no benchmark claims",
+  "train_size": 360,
+  "validation_size": 360,
+  "test_size": 90,
+  "data_seed": 2026,
+  "seeds": [0],
+  "architectures": ["cnn", "vit"],
+  "conditions": ["correlated", "independent"],
+  "epochs": 2,
+  "batch_size": 60,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.0001,
+  "threads": 2
+}

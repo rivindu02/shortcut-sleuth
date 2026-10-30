@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shortcut-sleuth"
+version = "0.1.0"
+description = "A paired background intervention study of small CNNs and Vision Transformers"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+dependencies = ["numpy>=1.26,<3", "Pillow>=10,<14", "torch>=2.2,<3"]
+
+[project.scripts]
+shortcut-sleuth = "shortcut_sleuth.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["shortcut_sleuth*"]
+
+[tool.setuptools.package-data]
+shortcut_sleuth = ["web/*"]
