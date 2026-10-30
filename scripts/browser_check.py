@@ -30,7 +30,7 @@ def main():
     thread.start()
     output = Path(args.output)
     output.mkdir(parents=True, exist_ok=True)
-    errors, checks = [], []
+    errors, checks, checked_models = [], [], set()
     try:
         with sync_playwright() as playwright:
             browser = playwright.chromium.launch(headless=True, args=["--disable-gpu"])
@@ -53,6 +53,7 @@ def main():
                 assert page.locator("#specimen-image").get_attribute("src") != original_image
                 assert "Square" in page.locator("#baseline-prediction").inner_text()
                 checks.append("background_swap_preserves_object")
+                page.screenshot(path=str(output / "lab-intervention.png"), full_page=True)
                 page.locator('[data-shape="1"]').click()
                 wait_for_object()
                 assert "Square" in page.locator("#specimen-image").get_attribute("alt")
@@ -71,12 +72,21 @@ def main():
                         expected = page.request.get(f"http://127.0.0.1:{server.server_port}/api/example?shape=1&seed=74").json()
                         for index in range(2):
                             card = cards.nth(index)
-                            model_id = card.locator(".model-choice").input_value()
-                            shown = card.locator(".probability-row span:last-child").all_text_contents()
-                            actual = expected["predictions"][model_id][1]
-                            assert shown == [f"{100 * probability:.1f}%" for probability in actual], (shown, actual)
-                    checks.append("both_conditions_match_actual_API_probabilities")
+                            choice = card.locator(".model-choice")
+                            for option in range(choice.locator("option").count()):
+                                choice.select_option(index=option)
+                                model_id = choice.input_value()
+                                for background in range(3):
+                                    page.locator(f'[data-background="{background}"]').click()
+                                    shown = card.locator(".probability-row span:last-child").all_text_contents()
+                                    actual = expected["predictions"][model_id][background]
+                                    assert shown == [f"{100 * probability:.1f}%" for probability in actual], (shown, actual)
+                                checked_models.add(model_id)
+                    assert checked_models == set(demo.predictors)
+                    checks.append("all_conditions_seeds_and_backgrounds_match_actual_API_probabilities")
                     page.locator("#condition").select_option("correlated")
+                    for choice in page.locator(".model-choice").all():
+                        choice.select_option(index=0)
                 else:
                     assert page.locator("#condition").is_disabled()
                     assert page.get_by_text("Awaiting a checkpoint", exact=True).count() == 2
@@ -98,7 +108,10 @@ def main():
                 assert not errors, errors
                 save_json(output / "browser.json", {"passed": True, "checks": checks,
                           "javascript_errors": errors, "browser": browser.version,
-                          "playwright": importlib.metadata.version("playwright"), "catalog": demo.catalog()})
+                          "playwright": importlib.metadata.version("playwright"), "catalog": demo.catalog(),
+                          "checkpoint_ids_checked": sorted(checked_models),
+                          "capture": {"object_id": "demo-73-000000", "seed": 73,
+                                      "canonical_background": 0, "intervention_background": 1}})
                 print(json.dumps({"passed": True, "checks": checks}, indent=2))
             finally:
                 browser.close()
