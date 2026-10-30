@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A controlled experiment in background shortcut learning. Keep the shape fixed, swap the background, compare model predictions.">
+  <title>Shortcut Sleuth · Background lab</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header><a class="brand" href="/" aria-label="Shortcut Sleuth home"><span class="brand-icon">◒</span> SHORTCUT SLEUTH</a><span class="header-note">A CONTROLLED VISION EXPERIMENT</span><span class="status"><i></i> Local lab</span></header>
+  <main>
+    <div class="eyebrow">01 / BACKGROUND INTERVENTION</div>
+    <h1>Same shape.<br><span>Different story?</span></h1>
+    <p class="intro">A model can get the right answer for the wrong reason. Keep every foreground pixel fixed, swap the background, and see what changes.</p>
+    <div id="mode-banner" class="banner" role="status">Connecting to the experiment…</div>
+    <div class="workspace">
+      <section class="panel specimen" aria-labelledby="specimen-title">
+        <div class="panel-head"><h2 id="specimen-title">The specimen</h2><span class="tag">64 × 64 RGB</span></div>
+        <div class="image-stage"><img id="specimen-image" alt="Generated shape against the selected background" width="256" height="256"><span class="stage-label">FOREGROUND LOCKED</span></div>
+        <div class="control-label">Shape <span>ground truth</span></div>
+        <div class="segmented" id="shape-controls" role="group" aria-label="Shape">
+          <button type="button" data-shape="0" aria-pressed="true">○ Circle</button><button type="button" data-shape="1" aria-pressed="false">□ Square</button><button type="button" data-shape="2" aria-pressed="false">△ Triangle</button>
+        </div>
+        <div class="control-label">Background <span>the intervention</span></div>
+        <div class="swatches" id="background-controls" role="group" aria-label="Background colour">
+          <button type="button" data-background="0" aria-pressed="true"><i class="coral"></i>Coral</button><button type="button" data-background="1" aria-pressed="false"><i class="mint"></i>Mint</button><button type="button" data-background="2" aria-pressed="false"><i class="violet"></i>Violet</button>
+        </div>
+        <div class="seed-row"><label for="object-seed">Object seed</label><input id="object-seed" type="number" min="0" max="4294967295" value="73"><button id="new-object" type="button">New specimen ↗</button></div>
+        <p id="object-id" class="micro">Loading deterministic object…</p>
+      </section>
+      <section class="comparison" aria-labelledby="comparison-title">
+        <div class="comparison-header"><div><div class="eyebrow">WATCH THE PREDICTIONS</div><h2 id="comparison-title">Shape or shortcut?</h2></div><label class="condition-label">Training condition<select id="condition"><option value="correlated">Correlated · 95% shortcut</option><option value="independent">Independent · balanced</option></select></label></div>
+        <div class="model-grid" id="model-cards" aria-live="polite"></div>
+        <article class="panel baseline"><div><span class="eyebrow">SANITY CHECK / COLOUR-ONLY RULE</span><h3 id="baseline-prediction">Background says: …</h3><p>This rule ignores the shape and predicts the class associated with the background. It is an analytic control, with no trained weights.</p></div><div class="baseline-metrics"><div><strong>95%</strong><span>Training-like</span></div><div><strong>33⅓%</strong><span>Independent</span></div><div><strong>0%</strong><span>Conflicting</span></div></div></article>
+        <div class="paired-strip panel"><div><h3>One object. Three backgrounds.</h3><p>Identical geometry, mask and foreground RGB values.</p></div><div id="paired-images"></div></div>
+      </section>
+    </div>
+    <section class="method"><div class="eyebrow">READING THIS EXPERIMENT</div><div class="method-grid"><div><span class="step">01</span><h3>Introduce a shortcut</h3><p>In correlated training, each shape gets its canonical background 95% of the time. The independent control balances all nine combinations.</p></div><div><span class="step">02</span><h3>Change one thing</h3><p>Each object is rendered against every background. The paired intervention measures sensitivity to this specific input change.</p></div><div><span class="step">03</span><h3>Keep the claims bounded</h3><p>Both models start from scratch. A small controlled study cannot establish that one architecture is universally more robust.</p></div></div></section>
+    <p id="error" class="error" role="alert" hidden></p>
+  </main>
+  <footer><span>SHORTCUT SLEUTH / BACKGROUND LAB</span><span>Deterministic objects. Paired interventions. Measured claims.</span></footer>
+</body>
+</html>
